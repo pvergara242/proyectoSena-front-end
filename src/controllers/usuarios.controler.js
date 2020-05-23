@@ -31,5 +31,24 @@ usuariosCtrl.crearUsuario = async (req, res) => {
     res.send('Usuarios');
 };
 
+usuariosCtrl.renderUsuarios = async(req, res) => {
+    let usuarios = await axios.get('http://localhost:3000/api/v1/get/Users');
+    let data = usuarios.data;
+    console.log('data: ', data);
+    res.render('usuarios/all-usuarios', { usuarios: data });
+};
+
+usuariosCtrl.renderEditarUsuarios = async(req, res) => {
+    console.log('req: ', req);
+    let usuario = await axios.get('http://localhost:3000/api/v1/get/User/' + req.params.id);
+    let data = usuario.data;
+    
+    let date = new Date( Date.parse(data.fechaNacimiento) );
+    let fechaNacimiento = date.toISOString().slice(0, 10);
+    data.fechaNacimiento = fechaNacimiento;
+    console.log('data get usuario: ', data);
+    res.render('usuarios/edit-usuarios', { usuario: data });
+};
+
 // exportamos el modelo de las notas 
 module.exports = usuariosCtrl;

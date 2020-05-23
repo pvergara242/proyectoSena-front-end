@@ -1,0 +1,28 @@
+<div class="row">
+    {{#each usuarios}}
+    <div class="col-md-3">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title d-flex justify-content-between align-items-center">
+                    {{tipoDeDocumento}} <i class="fas fa-edit"></i>
+                </h4>
+                <h4 class="card-title d-flex justify-content-between align-items-center">
+                    {{numeroDocumento}} <i class="fas fa-edit"></i>
+                </h4>
+                 <h4 class="card-title d-flex justify-content-between align-items-center">
+                    {{nombres}} <i class="fas fa-edit"></i>
+                </h4>
+                <h4 class="card-title d-flex justify-content-between align-items-center">
+                    {{apellidos}} <i class="fas fa-edit"></i>
+                </h4>
+                <button value="/usuarios/edit/{{_id}}">
+                    Editar
+                </button>
+                <button>
+                    Inactivar
+                </button>
+            </div>
+        </div>
+    </div>
+    {{/each}}
+</div>
