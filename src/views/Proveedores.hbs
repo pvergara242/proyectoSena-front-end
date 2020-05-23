@@ -1,0 +1,70 @@
+
+    {{!-- formulario para registrar un dato nuevo del proveedor --}}
+    
+    <center><form id="formulario" class="proveedores">
+        <fieldset>
+            <legend>DATOS DEL PROVEEDORES</legend>
+            <div id="tip_doc"><label for="">Tipo de Documento: </label><select name="" id="tipoDoc" class="caja_texto">
+                    <option value="Cedula de Ciudadanía">Cedula de Ciudadanía</option>
+                    <option value="Tarjeta de Identidad">Tarjeta de Identidad</option>
+                </select>
+            </div>
+            <div id="doc">
+                <label for="">N° Documento: </label>
+                <input name='numDoc' type='text' tabindex='1' class="caja_texto">
+            </div>
+
+            <div id="fecha_nac">
+                <label for="">Fecha de Nacimiento: </label>
+                <input type="date" id="fecha_nacimiento">
+            </div>
+
+            <div id="gen">
+                <label for="">Genero: </label>
+                <label for="" id="lbl_fem"><input type="radio" class="genero" value="Femenino" name="genero" id="f">Femenino</label>
+                <label for="" id="lbl_mas"><input type="radio" class="genero" value="Masculino" name="genero" id="m">Masculino</label>
+            </div>
+
+            <div id="nomb">
+                <label for="">Nombres: </label>
+                <input name='nombre' type='text' tabindex='1' class="caja_texto">
+            </div>
+
+            <div id="apel">
+                <label for="">Apellidos: </label>
+                <input name='apellidos' type='text' tabindex='2' class="caja_texto">
+            </div>
+
+            <div id="tel">
+                <label for="">Telefono fijo: </label>
+                <input name='tel_fij' type='text' tabindex='2' class="caja_texto">
+            </div>
+
+            <div id="cel">
+                <label for="">Celular: </label>
+                <input name='celular' type='text' tabindex='2' class="caja_texto">
+            </div>
+
+            <div id="email">
+                <label for="">Correo: </label>
+                <input name='direc' type='text' tabindex='2' class="caja_texto">
+            </div>
+
+            <div id="clave">
+                <label for="">Contraseña: </label>
+                <input name='contraseña' type='password' tabindex='2' class="caja_texto">
+            </div>
+
+            <div id="clave2">
+                <label for="">Confirmar contraseña: </label>
+                <input name='contraseña' type='password' tabindex='2' class="caja_texto">
+            </div>
+
+            <div id="botones">
+                <input type="submit" value="Registrar">
+                <input type="button" value="Reiniciar Campos">
+                <input type="button" value="Cancelar">
+            </div>
+
+        </fieldset>
+    </form></center>

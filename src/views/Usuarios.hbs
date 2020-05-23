@@ -1,0 +1,97 @@
+
+
+{{!-- formulario para los datos de usuarios y registrar un nuevo usuario --}}
+<center><!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario Registrar USUARIO</title>
+    <link rel="stylesheet" href="css/usuario_registrar.css">
+</head>
+
+<body>
+    <form action="/usuarios/new-usuario" method="post" id="formulario" class="usuarios">
+
+        <fieldset>
+            <legend>DATOS DEL USUARIO</legend>
+            
+            <div id="tip_doc">
+                <label for="">Tipo de Documento: </label>
+                <select name="tipoDoc" id="tipoDoc" class="caja_texto">
+                    <option value="Cedula de Ciudadanía">Cedula de Ciudadanía</option>
+                    <option value="Tarjeta de Identidad">Tarjeta de Identidad</option>
+                </select>
+            </div>
+            <div id="doc">
+                <label for="">N° Documento: </label>
+                <input name='numDoc' type='text' tabindex='1' class="caja_texto">
+            </div>
+
+            <div id="fecha_nac">
+                <label for="">Fecha de Nacimiento: </label>
+                <input name="fechaNac" type="date" id="fecha_nacimiento">
+            </div>
+
+            <div id="gen">
+                <label for="">Genero: </label>
+                <input type="radio" class="genero" value="Femenino" name="genero" id="f"><label for="" id="lbl_fem" >Femenino</label>
+                <input type="radio" class="genero" value="Masculino" name="genero" id="m"><label for="" id="lbl_mas">Masculino</label>
+            </div>
+
+            <div id="nomb">
+                <label for="">Nombres: </label>
+                <input name='nombre' type='text' tabindex='1' class="caja_texto">
+            </div>
+
+            <div id="apel">
+                <label for="">Apellidos: </label>
+                <input name='apellidos' type='text' tabindex='2' class="caja_texto">
+            </div>
+
+            <div id="tel">
+                <label for="">Telefono fijo: </label>
+                <input name='tel_fij' type='text' tabindex='2' class="caja_texto">
+            </div>
+
+            <div id="cel">
+                <label for="">Celular: </label>
+                <input name='celular' type='text' tabindex='2' class="caja_texto">
+            </div>
+
+            <div id="email">
+                <label for="">Correo: </label>
+                <input name='direc' type='text' tabindex='2' class="caja_texto">
+            </div>
+
+            <div id="clave">
+                <label for="">Contraseña: </label>
+                <input name='contraseña' type='password' tabindex='2' class="caja_texto">
+            </div>
+
+            <div id="clave2">
+                <label for="">Confirmar contraseña: </label>
+                <input name='contraseña' type='password' tabindex='2' class="caja_texto">
+            </div>
+
+            <div id="rol">
+                <label for="">Rol: </label>
+                <input type="radio" class="rol" value="1" name="rol" id="adm"><label for="" id="lbl_adm">Administrador</label>
+                <input type="radio" class="rol" value="2" name="rol" id="aux"><label for="" id="lbl_aux">Auxiliar</label>
+            </div>
+
+            <div id="botones">
+                <input type="submit" value="Registrar">
+                <input type="button" value="Reiniciar Campos">
+                <input type="button" value="Cancelar">
+            </div>
+
+        </fieldset>
+
+
+
+    </form>
+</body>
+
+</html></center>
