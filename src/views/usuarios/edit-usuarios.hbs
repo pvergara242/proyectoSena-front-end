@@ -12,11 +12,11 @@
 </head>
 
 <body>
-    <form action="/usuarios/edit-usuario" method="post" id="formulario" class="usuarios">
+    <form action="/usuarios/actualizar-usuario" method="post" id="formulario" class="usuarios">
 
         <fieldset>
             <legend>DATOS DEL USUARIO</legend>
-            
+            <input type="hidden" value="{{usuario._id}}" name="usuarioId" />
             <div id="tip_doc">
                 <label for="">Tipo de Documento: </label>
                 <select name="tipoDoc" id="tipoDoc" class="caja_texto">

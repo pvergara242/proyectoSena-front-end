@@ -1,28 +1,38 @@
 <div class="row">
-    {{#each usuarios}}
-    <div class="col-md-3">
-        <div class="card">
-            <div class="card-body">
-                <h4 class="card-title d-flex justify-content-between align-items-center">
-                    {{tipoDeDocumento}} <i class="fas fa-edit"></i>
-                </h4>
-                <h4 class="card-title d-flex justify-content-between align-items-center">
-                    {{numeroDocumento}} <i class="fas fa-edit"></i>
-                </h4>
-                 <h4 class="card-title d-flex justify-content-between align-items-center">
-                    {{nombres}} <i class="fas fa-edit"></i>
-                </h4>
-                <h4 class="card-title d-flex justify-content-between align-items-center">
-                    {{apellidos}} <i class="fas fa-edit"></i>
-                </h4>
-                <button value="/usuarios/edit/{{_id}}">
-                    Editar
-                </button>
-                <button>
-                    Inactivar
-                </button>
-            </div>
-        </div>
+    <div class="table-responsive">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Tipo Documento</th>
+                    <th scope="col"># Documento</th>
+                    <th scope="col">Nombres</th>
+                    <th scope="col">Apellidos</th>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each usuarios}}
+                <tr>
+                    <th scope="row">{{inc @index}}</th>
+                    <td>{{tipoDeDocumento}}</td>
+                    <td>{{numeroDocumento}}</td>
+                    <td>{{nombres}}</td>
+                    <td>{{apellidos}}</td>
+                    <td>
+                        <button onclick="location.href='/usuarios/edit/{{_id}}';">
+                            Editar
+                        </button>
+                    </td>
+                    <td>
+                        <button>
+                            Inactivar
+                        </button>
+                    </td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
     </div>
-    {{/each}}
 </div>

@@ -28,7 +28,7 @@ usuariosCtrl.crearUsuario = async (req, res) => {
     } catch (error) {
         console.log(error);
     }
-    res.send('Usuarios');
+    res.redirect('/usuarios/all');
 };
 
 usuariosCtrl.renderUsuarios = async(req, res) => {
@@ -48,6 +48,34 @@ usuariosCtrl.renderEditarUsuarios = async(req, res) => {
     data.fechaNacimiento = fechaNacimiento;
     console.log('data get usuario: ', data);
     res.render('usuarios/edit-usuarios', { usuario: data });
+};
+
+usuariosCtrl.renderActualizarUsuario = async (req, res) => {
+    console.log('request: ', req);
+    console.log('request body: ', req.body);
+
+    var requestBody = {
+        "tipoDeDocumento": req.body.tipoDoc,
+        "numeroDocumento": req.body.numDoc,
+        "fechaNacimiento": req.body.fechaNac,
+        "genero": req.body.genero,
+        "nombres": req.body.nombre,
+        "apellidos": req.body.apellidos,
+        "telefonoFijo": req.body.tel_fij,
+        "celular": req.body.celular,
+        "correo": req.body.direc,
+        "rol": req.body.rol
+    }
+    
+    let headers = { 'Content-Type': 'application/json' };
+    
+    try {
+        let fetchResponse = await axios.put('http://localhost:3000/api/v1/update/User/' + req.body.usuarioId, requestBody, headers);
+        console.log('fetchResponse', fetchResponse);
+    } catch (error) {
+        console.log(error);
+    }
+    res.redirect('/usuarios/all');
 };
 
 // exportamos el modelo de las notas 
