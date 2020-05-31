@@ -30,7 +30,6 @@ app.use(express.urlencoded({ extended: false }));
 
 //rutas 
 app.use(require('./routes/indexroutes'));
-app.use(require('./routes/notes.routes'));
 app.use(require('./routes/usuarios.routes'));
 
 //static files 

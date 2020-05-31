@@ -1,4 +1,3 @@
-console.log('test hansel');
 var expressHbs =  require('express-handlebars');
 
 var hbs = expressHbs.create({});

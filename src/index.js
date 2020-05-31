@@ -1,6 +1,5 @@
 require('dotenv').config();
 const app = require('./server');
-require('./database');
 
 // conexion a los puertos para visualizarse en google 
 app.listen(app.get('port'), () => {
