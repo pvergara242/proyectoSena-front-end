@@ -1,5 +1,6 @@
 const usuariosCtrl = {};
 const axios = require("axios");
+const endpoints = require('../configuration/endpoints');
 
 // crear las notas y renderiza una nueva pagina 
 usuariosCtrl.crearUsuario = async (req, res) => {
@@ -23,7 +24,7 @@ usuariosCtrl.crearUsuario = async (req, res) => {
     let headers = { 'Content-Type': 'application/json' };
     
     try {
-        let fetchResponse = await axios.post('http://localhost:3000/api/v1/create/User', requestBody, headers);
+        let fetchResponse = await axios.post(endpoints.backendHost + '/api/v1/create/User', requestBody, headers);
         console.log('fetchResponse', fetchResponse);
     } catch (error) {
         console.log(error);
@@ -32,7 +33,8 @@ usuariosCtrl.crearUsuario = async (req, res) => {
 };
 
 usuariosCtrl.renderUsuarios = async(req, res) => {
-    let usuarios = await axios.get('http://localhost:3000/api/v1/get/Users');
+    console.log("endpoints.backendHost: ", endpoints.backendHost);
+    let usuarios = await axios.get(endpoints.backendHost + '/api/v1/get/Users');
     let data = usuarios.data;
     console.log('data: ', data);
     res.render('usuarios/all-usuarios', { usuarios: data });
@@ -40,7 +42,7 @@ usuariosCtrl.renderUsuarios = async(req, res) => {
 
 usuariosCtrl.renderEditarUsuarios = async(req, res) => {
     console.log('req: ', req);
-    let usuario = await axios.get('http://localhost:3000/api/v1/get/User/' + req.params.id);
+    let usuario = await axios.get(endpoints.backendHost + '/api/v1/get/User/' + req.params.id);
     let data = usuario.data;
     
     let date = new Date( Date.parse(data.fechaNacimiento) );
@@ -70,7 +72,7 @@ usuariosCtrl.renderActualizarUsuario = async (req, res) => {
     let headers = { 'Content-Type': 'application/json' };
     
     try {
-        let fetchResponse = await axios.put('http://localhost:3000/api/v1/update/User/' + req.body.usuarioId, requestBody, headers);
+        let fetchResponse = await axios.put(endpoints.backendHost + '/api/v1/update/User/' + req.body.usuarioId, requestBody, headers);
         console.log('fetchResponse', fetchResponse);
     } catch (error) {
         console.log(error);

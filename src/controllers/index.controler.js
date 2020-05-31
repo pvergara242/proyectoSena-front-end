@@ -1,4 +1,3 @@
-
 const indexCrl = {};
 // renderizar la conexion con las interfaces de las paginas 
 indexCrl.renderIndex = (req, res) => {
