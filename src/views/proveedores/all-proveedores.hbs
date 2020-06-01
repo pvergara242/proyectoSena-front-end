@@ -1,27 +1,28 @@
 <div class="row">
+    <legend>LISTA DE PROVEEDORES</legend>
     <div class="table-responsive">
         <table class="table table-bordered">
             <thead>
                 <tr>
                     <th scope="col">#</th>
-                    <th scope="col">Tipo Documento</th>
-                    <th scope="col"># Documento</th>
-                    <th scope="col">Nombres</th>
-                    <th scope="col">Apellidos</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">NIT</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Telefono</th>
                     <th scope="col"></th>
                     <th scope="col"></th>
                 </tr>
             </thead>
             <tbody>
-                {{#each usuarios}}
+                {{#each proveedores}}
                 <tr>
                     <th scope="row">{{inc @index}}</th>
-                    <td>{{datosPersonales.tipoDocumento}}</td>
-                    <td>{{datosPersonales.numeroDocumento}}</td>
-                    <td>{{datosPersonales.nombres}}</td>
-                    <td>{{datosPersonales.apellidos}}</td>
+                    <td>{{nombre}}</td>
+                    <td>{{nit}}</td>
+                    <td>{{email}}</td>
+                    <td>{{telefono}}</td>
                     <td>
-                        <button onclick="location.href='/usuarios/edit/{{_id}}';">
+                        <button onclick="location.href='/proveedores/edit/{{_id}}';">
                             Editar
                         </button>
                     </td>

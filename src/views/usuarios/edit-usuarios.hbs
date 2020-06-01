@@ -1,87 +1,94 @@
-
-
-{{!-- formulario para los datos de usuarios y registrar un nuevo usuario --}}
-<center><!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formulario Registrar USUARIO</title>
-    <link rel="stylesheet" href="css/usuario_registrar.css">
-</head>
-
-<body>
-    <form action="/usuarios/actualizar-usuario" method="post" id="formulario" class="usuarios">
-
-        <fieldset>
-            <legend>DATOS DEL USUARIO</legend>
-            <input type="hidden" value="{{usuario._id}}" name="usuarioId" />
-            <div id="tip_doc">
-                <label for="">Tipo de Documento: </label>
-                <select name="tipoDoc" id="tipoDoc" class="caja_texto">
-                    <option value="Cedula de Ciudadanía" {{#if (verificarTipoDoc usuario.tipoDeDocumento 'Cedula de Ciudadanía')}}selected{{/if}}>Cedula de Ciudadanía</option>
-                    <option value="Tarjeta de Identidad" {{#if (verificarTipoDoc usuario.tipoDeDocumento 'Tarjeta de Identidad')}}selected{{/if}}>Tarjeta de Identidad</option>
-                </select>
+<form action="/usuarios/actualizar-usuario" method="post" id="formulario">
+    <legend>DATOS DEL USUARIO</legend>
+    <input type="hidden" value="{{usuario._id}}" name="usuarioId" />
+    <div id="divTipoDoc" class="form-group row">
+        <label for="tipoDocumento" class="col-sm-2 control-label">Tipo de Documento: </label>
+        <div class="col-sm-10">
+            <select name="tipoDocumento" id="tipoDocumento" class="form-control">
+                <option value="Cedula de Ciudadanía" {{#if (verificarTipoDoc usuario.datosPersonales.tipoDocumento 'Cedula de Ciudadanía')}}selected{{/if}}>Cedula de Ciudadanía</option>
+                <option value="Tarjeta de Identidad" {{#if (verificarTipoDoc usuario.datosPersonales.tipoDocumento 'Tarjeta de Identidad')}}selected{{/if}}>Tarjeta de Identidad</option>
+            </select>
+        </div>
+    </div>
+    <div id="divDoc" class="form-group row">
+        <label for="inputNumDoc" class="col-sm-2 col-form-label">N° Documento: </label>
+        <div class="col-sm-10">
+            <input name="numDoc" type="text" class="form-control" id="inputNumDoc" value="{{usuario.datosPersonales.numeroDocumento}}">
+        </div>
+    </div>
+    <div id="divFechaNac" class="form-group row">
+        <label for="inputFechaNac" class="col-sm-2 col-form-label">Fecha Nacimiento: </label>
+        <div class="col-sm-10">
+            <input name="fechaNac" type="date" class="form-control" id="inputFechaNac" value="{{usuario.datosPersonales.fechaNacimiento}}">
+        </div>
+    </div>
+    <div id="divGen" class="form-group row">
+        <label for="inputGen" class="col-sm-2 col-form-label">Genero: </label>
+        <div class="col-sm-10">
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="genero" id="inlineRadio1" value="Femenino" {{#if (verificarGenero usuario.datosPersonales.genero 'Femenino')}}checked{{/if}}>
+                <label class="form-check-label" for="inlineRadio1">Femenino</label>
             </div>
-            <div id="doc">
-                <label for="">N° Documento: </label>
-                <input name='numDoc' type='text' tabindex='1' value="{{usuario.numeroDocumento}}" class="caja_texto">
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="genero" id="inlineRadio2" value="Masculino" {{#if (verificarGenero usuario.datosPersonales.genero 'Masculino')}}checked{{/if}}>
+                <label class="form-check-label" for="inlineRadio2">Masculino</label>
             </div>
-
-            <div id="fecha_nac">
-                <label for="">Fecha de Nacimiento: </label>
-                <input name="fechaNac" type="date" id="fecha_nacimiento" value="{{usuario.fechaNacimiento}}">
+        </div>
+    </div>
+    <div id="divNombres" class="form-group row">
+        <label for="inputNombres" class="col-sm-2 col-form-label">Nombres: </label>
+        <div class="col-sm-10">
+            <input name="nombre" type="text" class="form-control" id="inputNombres" value="{{usuario.datosPersonales.nombres}}">
+        </div>
+    </div>
+    <div id="divApellidos" class="form-group row">
+        <label for="inputApellidos" class="col-sm-2 col-form-label">Apellidos: </label>
+        <div class="col-sm-10">
+            <input name="apellidos" type="text" class="form-control" id="inputApellidos" value="{{usuario.datosPersonales.apellidos}}">
+        </div>
+    </div>
+    <div id="divTelefonoFijo" class="form-group row">
+        <label for="inputTelefonoFijo" class="col-sm-2 col-form-label">Telefono fijo: </label>
+        <div class="col-sm-10">
+            <input name="tel_fij" type="text" class="form-control" id="inputTelefonoFijo" value="{{usuario.datosPersonales.telefonoFijo}}">
+        </div>
+    </div>
+    <div id="divCelular" class="form-group row">
+        <label for="inputCelular" class="col-sm-2 col-form-label">Celular: </label>
+        <div class="col-sm-10">
+            <input name="celular" type="text" class="form-control" id="inputCelular" value="{{usuario.datosPersonales.celular}}">
+        </div>
+    </div>
+    <div id="divDireccion" class="form-group row">
+        <label for="inputDireccion" class="col-sm-2 col-form-label">Dirección: </label>
+        <div class="col-sm-10">
+            <input name="direccion" type="text" class="form-control" id="inputDireccion" value="{{usuario.datosPersonales.direccion}}">
+        </div>
+    </div>
+    <div id="divEmail" class="form-group row">
+        <label for="inputEmail" class="col-sm-2 col-form-label">Correo: </label>
+        <div class="col-sm-10">
+            <input name="direc" type="text" class="form-control" id="inputEmail" value="{{usuario.datosPersonales.correo}}">
+        </div>
+    </div>
+    <div id="divRol" class="form-group row">
+        <label for="inputRol" class="col-sm-2 col-form-label">Rol: </label>
+        <div class="col-sm-10">
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="rol" id="inlineRadioAdministrador" value="1" {{#if (verificarRol usuario.rol '1')}}checked{{/if}}>
+                <label class="form-check-label" for="inlineRadioAdministrador">Administrador</label>
             </div>
-
-            <div id="gen">
-                <label for="">Genero: </label>
-                <input type="radio" class="genero" value="Femenino" name="genero" id="f" {{#if (verificarGenero usuario.genero 'Femenino')}}checked{{/if}}><label for="" id="lbl_fem" >Femenino</label>
-                <input type="radio" class="genero" value="Masculino" name="genero" id="m" {{#if (verificarGenero usuario.genero 'Masculino')}}checked{{/if}}><label for="" id="lbl_mas">Masculino</label>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="rol" id="inlineRadioAuxiliar" value="2" {{#if (verificarRol usuario.rol '2')}}checked{{/if}}>
+                <label class="form-check-label" for="inlineRadioAuxiliar">Auxiliar</label>
             </div>
-
-            <div id="nomb">
-                <label for="">Nombres: </label>
-                <input name='nombre' type='text' tabindex='1' class="caja_texto" value="{{usuario.nombres}}">
-            </div>
-
-            <div id="apel">
-                <label for="">Apellidos: </label>
-                <input name='apellidos' type='text' tabindex='2' class="caja_texto" value="{{usuario.apellidos}}">
-            </div>
-
-            <div id="tel">
-                <label for="">Telefono fijo: </label>
-                <input name='tel_fij' type='text' tabindex='2' class="caja_texto" value="{{usuario.telefonoFijo}}">
-            </div>
-
-            <div id="cel">
-                <label for="">Celular: </label>
-                <input name='celular' type='text' tabindex='2' class="caja_texto" value="{{usuario.celular}}">
-            </div>
-
-            <div id="email">
-                <label for="">Correo: </label>
-                <input name='direc' type='text' tabindex='2' class="caja_texto" value="{{usuario.correo}}">
-            </div>
-
-            <div id="rol">
-                <label for="">Rol: </label>
-                <input type="radio" class="rol" value="1" name="rol" id="adm" {{#if (verificarRol usuario.rol '1')}}checked{{/if}}><label for="" id="lbl_adm">Administrador</label>
-                <input type="radio" class="rol" value="2" name="rol" id="aux" {{#if (verificarRol usuario.rol '2')}}checked{{/if}}><label for="" id="lbl_aux">Auxiliar</label>
-            </div>
-
-            <div id="botones">
-                <input type="submit" value="Guardar">
-                <input type="button" value="Reiniciar Campos">
-                <input type="button" value="Cancelar">
-            </div>
-
-        </fieldset>
-
-
-
-    </form>
-</body>
-
-</html></center>
+        </div>
+    </div>
+    <div id="divBotones" class="form-group">
+        <div>
+            <input type="submit" class="btn btn-secondary" value="Guardar">
+            <input type="button" class="btn btn-secondary" value="Reiniciar Campos">
+            <input type="button" class="btn btn-secondary" value="Cancelar">
+        </div>
+    </div>
+</form>

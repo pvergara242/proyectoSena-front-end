@@ -935,3 +935,9 @@ legend{
   top: 500px;
   left: 50px;
 }
+
+.error-login {
+  position: absolute;
+  top: 345px;
+  left: 0px;
+}
