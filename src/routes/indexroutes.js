@@ -8,7 +8,8 @@ const {
     renderUsuarios,
     renderProveedores,
     renderFactura,
-    renderLogin
+    renderLogin,
+    renderLogout
 } = require('../controllers/index.controler')
 
 router.get('/', renderIndex);
@@ -17,6 +18,7 @@ router.get('/Usuarios', renderUsuarios);
 router.get('/Proveedores', renderProveedores);
 router.get('/Factura', renderFactura);
 router.get('/Login', renderLogin);
+router.get('/Logout', renderLogout);
 
 router.use(function(err, req, res, next) {
     if (!err) {

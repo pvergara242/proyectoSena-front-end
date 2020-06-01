@@ -30,6 +30,16 @@ app.use(function(req,res,next){
 	}
     next();
 });
+app.use(function(req, res, next) {
+	if (req.cookies && req.cookies['usuario']) {
+		res.locals.usuario = true;
+		res.locals.usuarioInfo = JSON.parse(req.cookies['usuario']);
+	} else {
+		res.clearCookie('token', { domain: 'localhost', path:'/' });
+		res.clearCookie('usuario', { domain: 'localhost', path:'/' });
+	}
+  	next();
+});
 
 //variables globales 
 
