@@ -1,14 +1,10 @@
 const usuariosCtrl = {};
-const axios = require("axios");
-const endpoints = require('../configuration/endpoints');
+const rest = require('../configuration/rest');
 
 // crear las notas y renderiza una nueva pagina 
-usuariosCtrl.crearUsuario = async (req, res) => {
-    console.log('request: ', req);
-    console.log('request body: ', req.body);
-
+usuariosCtrl.crearUsuario = async (req, res, next) => {
     var requestBody = {
-        "tipoDeDocumento": req.body.tipoDoc,
+        "tipoDocumento": req.body.tipoDocumento,
         "numeroDocumento": req.body.numDoc,
         "fechaNacimiento": req.body.fechaNac,
         "genero": req.body.genero,
@@ -16,48 +12,49 @@ usuariosCtrl.crearUsuario = async (req, res) => {
         "apellidos": req.body.apellidos,
         "telefonoFijo": req.body.tel_fij,
         "celular": req.body.celular,
+        "direccion": req.body.direccion,
         "correo": req.body.direc,
-        "contrasena": req.body.contraseña[0],
+        "clave": req.body.contraseña[0],
         "rol": req.body.rol
     }
     
-    let headers = { 'Content-Type': 'application/json' };
-    
-    try {
-        let fetchResponse = await axios.post(endpoints.backendHost + '/api/v1/create/User', requestBody, headers);
-        console.log('fetchResponse', fetchResponse);
-    } catch (error) {
-        console.log(error);
-    }
-    res.redirect('/usuarios/all');
+    rest.post(req, '/api/v1/usuarios', requestBody)
+    .then(result => {
+        res.redirect('/usuarios/all');
+    })
+    .catch(err => {
+        next(err);
+    });    
 };
 
-usuariosCtrl.renderUsuarios = async(req, res) => {
-    console.log("endpoints.backendHost: ", endpoints.backendHost);
-    let usuarios = await axios.get(endpoints.backendHost + '/api/v1/get/Users');
-    let data = usuarios.data;
-    console.log('data: ', data);
-    res.render('usuarios/all-usuarios', { usuarios: data });
+usuariosCtrl.renderUsuarios = async(req, res, next) => {
+    rest.get(req, '/api/v1/usuarios')
+    .then(result => {
+        let data = result.data;
+        res.render('usuarios/all-usuarios', { usuarios: data });
+    })
+    .catch(err => {
+        next(err);
+    });
 };
 
-usuariosCtrl.renderEditarUsuarios = async(req, res) => {
-    console.log('req: ', req);
-    let usuario = await axios.get(endpoints.backendHost + '/api/v1/get/User/' + req.params.id);
-    let data = usuario.data;
-    
-    let date = new Date( Date.parse(data.fechaNacimiento) );
-    let fechaNacimiento = date.toISOString().slice(0, 10);
-    data.fechaNacimiento = fechaNacimiento;
-    console.log('data get usuario: ', data);
-    res.render('usuarios/edit-usuarios', { usuario: data });
+usuariosCtrl.renderEditarUsuarios = async(req, res, next) => {
+    rest.get(req, '/api/v1/usuarios/' + req.params.id)
+    .then(result => {
+        let data = result.data;
+        let date = new Date( Date.parse(data.datosPersonales.fechaNacimiento) );
+        let fechaNacimiento = date.toISOString().slice(0, 10);
+        data.datosPersonales.fechaNacimiento = fechaNacimiento;
+        res.render('usuarios/edit-usuarios', { usuario: data });
+    })
+    .catch(err => {
+        next(err);
+    }); 
 };
 
-usuariosCtrl.renderActualizarUsuario = async (req, res) => {
-    console.log('request: ', req);
-    console.log('request body: ', req.body);
-
+usuariosCtrl.renderActualizarUsuario = async (req, res, next) => {
     var requestBody = {
-        "tipoDeDocumento": req.body.tipoDoc,
+        "tipoDocumento": req.body.tipoDocumento,
         "numeroDocumento": req.body.numDoc,
         "fechaNacimiento": req.body.fechaNac,
         "genero": req.body.genero,
@@ -65,19 +62,41 @@ usuariosCtrl.renderActualizarUsuario = async (req, res) => {
         "apellidos": req.body.apellidos,
         "telefonoFijo": req.body.tel_fij,
         "celular": req.body.celular,
+        "direccion": req.body.direccion,
         "correo": req.body.direc,
         "rol": req.body.rol
     }
     
-    let headers = { 'Content-Type': 'application/json' };
-    
-    try {
-        let fetchResponse = await axios.put(endpoints.backendHost + '/api/v1/update/User/' + req.body.usuarioId, requestBody, headers);
-        console.log('fetchResponse', fetchResponse);
-    } catch (error) {
-        console.log(error);
-    }
-    res.redirect('/usuarios/all');
+    rest.put(req, '/api/v1/usuarios/' + req.body.usuarioId, requestBody)
+        .then(result => {
+        res.redirect('/usuarios/all');
+    })
+    .catch(err => {
+        next(err);
+    });
+};
+
+// crear las notas y renderiza una nueva pagina 
+usuariosCtrl.ejecutarLogin = async (req, res, next) => {
+    var requestBody = {
+        "numeroDocumento": req.body.numDoc,
+        "pwd": req.body.contrasena
+    };
+
+    rest.post(req, '/api/v1/auth/signin', requestBody)
+        .then(result => {
+            res.cookie('token', result.data.token, { expires: new Date(Date.now() + 3600 * 1000), path: '/' });
+            res.cookie('usuario', JSON.stringify(result.data.usuario), { expires: new Date(Date.now() + 3600 * 1000)    , path: '/' });
+            res.render('Usuarios');
+        })
+        .catch(err => {
+            console.log('Error de autenticacion: ', err);
+            var errorMessage = 'Error de autenticación. El servicio no está disponible en este momento. Intente mas tarde.';
+            if (err.response.status === 401) {
+                errorMessage = 'Error de autenticación. Verifique los datos ingresados e intente nuevamente.';
+            }
+            res.render('Login', { message: { content : errorMessage } });
+        });
 };
 
 // exportamos el modelo de las notas 

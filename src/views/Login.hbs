@@ -2,8 +2,7 @@
    
    {{!-- formulario para el iniciar sesion --}}
    <center> <div class="cuadro">
-
-        <form action="" method="post" name="login">
+        <form action="/usuarios/sign-in" method="post" name="login">
 
             
             <div id="containerTitulo">
@@ -12,13 +11,16 @@
 
             </div>
 
-            <input type="text" class="campoTxt" id="documento" placeholder="Introduzca su documento de identidad">
+            <input type="text" class="campoTxt" id="documento" placeholder="Introduzca su documento de identidad" name="numDoc">
 
-            <input type="password" class="campoTxt" id="contraseña"  placeholder="Introduzca su contraseña">
+            <input type="password" class="campoTxt" id="contraseña"  placeholder="Introduzca su contraseña" name="contrasena">
 
-            <input type="button" value="Ingresar" id="botonIng" class="boton" onclick="location.href='modulo_usuarios.html'"><br><br>
+            <input type="submit" value="Ingresar" id="botonIng" class="boton"><br><br>
             
             <label for="" id="recuperar_cl">Recuperar contraseña</label>
+            {{#if message}}
+                <span class="error-login">{{message.content}}</span>
+            {{/if}}
         </form>
     </div></center>
 
