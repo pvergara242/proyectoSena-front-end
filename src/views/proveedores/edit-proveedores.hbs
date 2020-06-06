@@ -1,40 +1,41 @@
 {{!-- formulario para registrar un dato nuevo del proveedor --}}
-<form action="/proveedores/new-proveedor" method="post" id="formulario">
-    <legend>REGISTRO DE PROVEEDOR</legend>
+<form action="/proveedores/actualizar-proveedor" method="post" id="formulario">
+    <legend>DATOS DE PROVEEDOR</legend>
+    <input type="hidden" value="{{proveedor._id}}" name="proveedorId" />
     <div id="divNombre" class="form-group row">
         <label for="inputNombre" class="col-sm-2 col-form-label">Nombre: </label>
         <div class="col-sm-10">
-            <input name="nombre" type="text" class="form-control" id="inputNombre">
+            <input name="nombre" type="text" class="form-control" id="inputNombre" value="{{proveedor.nombre}}">
         </div>
     </div>
     <div id="divNit" class="form-group row">
         <label for="inputNit" class="col-sm-2 col-form-label">NIT: </label>
         <div class="col-sm-10">
-            <input name="nit" type="text" class="form-control" id="inputNit">
+            <input name="nit" type="text" class="form-control" id="inputNit" value="{{proveedor.nit}}">
         </div>
     </div>
     <div id="divEmail" class="form-group row">
         <label for="inputEmail" class="col-sm-2 col-form-label">Email: </label>
         <div class="col-sm-10">
-            <input name="email" type="email" class="form-control" id="inputEmail">
+            <input name="email" type="email" class="form-control" id="inputEmail" value="{{proveedor.email}}">
         </div>
     </div>
     <div id="divTelefono" class="form-group row">
         <label for="inputTelefono" class="col-sm-2 col-form-label">Teléfono: </label>
         <div class="col-sm-10">
-            <input name="telefono" type="text" class="form-control" id="inputTelefono">
+            <input name="telefono" type="text" class="form-control" id="inputTelefono" value="{{proveedor.telefono}}">
         </div>
     </div>
     <div id="divDireccion" class="form-group row">
         <label for="inputDireccion" class="col-sm-2 col-form-label">Direccion: </label>
         <div class="col-sm-10">
-            <input name="direccion" type="text" class="form-control" id="inputDireccion">
+            <input name="direccion" type="text" class="form-control" id="inputDireccion" value="{{proveedor.direccion}}">
         </div>
     </div>
     <div id="divBotones" class="form-group">
         <div>
-            <input type="submit" class="btn btn-secondary" value="Registrar">
-            <input type="button" class="btn btn-secondary" value="Reiniciar Campos" onclick="document.getElementById('formulario').reset()">
+            <input type="submit" class="btn btn-secondary" value="Guardar">
+            <input type="button" class="btn btn-secondary" value="Reiniciar Campos" onclick="window.location.href='/proveedores/edit/{{proveedor._id}}'">
             <input type="button" class="btn btn-secondary" value="Cancelar" onClick="window.location.href='/proveedores/all'">
         </div>
     </div>
