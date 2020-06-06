@@ -6,7 +6,6 @@ const morgan = require('morgan');
 //inicializaciones
 const app = express();
 
-
 //configuraciones 
 app.set('port', process.env.PORT || 5000);
 app.set('views', path.join(__dirname, '/views'));
@@ -19,13 +18,12 @@ app.engine('.hbs', exphbs({
 
 app.set('view engine', '.hbs');
 
-
 //middlewares
 app.use(morgan('dev'));
 app.use(express.urlencoded({ extended: false }));
 app.use(require('cookie-parser')());
 app.use(function(req,res,next){
-	if (req.cookies && req.cookies['token']) {
+	if (req.cookies && req.cookies.token) {
 		req.headers.authorization = req.cookies['token'];
 	}
     next();
@@ -35,8 +33,8 @@ app.use(function(req, res, next) {
 		res.locals.usuario = true;
 		res.locals.usuarioInfo = JSON.parse(req.cookies['usuario']);
 	} else {
-		res.clearCookie('token', { domain: 'localhost', path:'/' });
-		res.clearCookie('usuario', { domain: 'localhost', path:'/' });
+		res.clearCookie('token', { path:'/' });
+		res.clearCookie('usuario', { path:'/' });
 	}
   	next();
 });
