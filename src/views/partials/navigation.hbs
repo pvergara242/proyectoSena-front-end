@@ -10,18 +10,26 @@
         <li class="nav-item active">
           <a class="nav-link" href="/">SOBRE NOSOTROS<span class="sr-only">(current)</span></a>
         </li>
+        {{#if usuario}}
         <li class="nav-item">
           <a class="nav-link" href="/About">DATOS PERSONALES</a>
         </li>
+        {{/if}}
+        {{#if usuario}}
         <li class="nav-item">
           <a class="nav-link" href="/Usuarios">USUARIOS</a>
         </li>
+        {{/if}}
+        {{#if usuario}}
         <li class="nav-item">
           <a class="nav-link" href="/Proveedores">PROVEEDORES</a>
         </li>
+        {{/if}}
+        {{#if usuario}}
         <li class="nav-item">
           <a class="nav-link" href="/Factura">FACTURA</a>
         </li>
+        {{/if}}
       </ul>
       <ul class="navbar-nav ml-auto">
         {{#if usuario}}
