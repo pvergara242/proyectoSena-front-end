@@ -30,13 +30,10 @@ indexCrl.renderLogin = (req, res) => {
 indexCrl.renderLogout = (req, res, next) => {
 	res.locals.usuario = false;
 	res.locals.usuarioInfo = {};
-	res.cookie('token', {}, { expires: new Date(Date.now()), path: '/' });
-    res.cookie('usuario', {}, { expires: new Date(Date.now())    , path: '/' });
-	res.clearCookie('token', {path:'/'});
-	res.clearCookie('usuario', {path:'/'});
-	res.status(200);
-    res.render('index').send();
+    res.clearCookie('token', { path: '/' });
+    res.clearCookie('usuario', { path: '/' });
+    res.status(200);
+    res.redirect('/');
 };
-
 
 module.exports = indexCrl;

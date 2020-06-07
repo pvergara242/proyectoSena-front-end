@@ -85,9 +85,21 @@ usuariosCtrl.ejecutarLogin = async (req, res, next) => {
 
     rest.post(req, '/api/v1/auth/signin', requestBody)
         .then(result => {
-            res.cookie('token', result.data.token, { expires: new Date(Date.now() + 3600 * 1000), path: '/' });
-            res.cookie('usuario', JSON.stringify(result.data.usuario), { expires: new Date(Date.now() + 3600 * 1000)    , path: '/' });
-            res.render('Usuarios');
+            res.cookie('token', result.data.token, {
+              maxAge: 60 * 60 * 1000, // 1 hour
+              httpOnly: true,
+              secure: true,
+              sameSite: true,
+              path: '/'
+            });
+            res.cookie('usuario', JSON.stringify(result.data.usuario), {
+              maxAge: 60 * 60 * 1000, // 1 hour
+              httpOnly: true,
+              secure: true,
+              sameSite: true,
+              path: '/'
+            });
+            res.redirect('/Usuarios');
         })
         .catch(err => {
             console.log('Error de autenticacion: ', err);
