@@ -1,0 +1,42 @@
+ 
+ {{!-- formulario para datos personales cuando se renderiza la pagina al darle click en datos personales  --}}
+ <form action="/proveedores/new-proveedor" method="post" id="formulario">
+    <legend>REGISTRO DE PRODUCTOS</legend>
+    <div id="divNombre" class="form-group row">
+        <label for="inputNombre" class="col-sm-2 col-form-label">Nombre: </label>
+        <div class="col-sm-10">
+            <input name="nombre" type="text" class="form-control" id="inputNombre">
+        </div>
+    </div>
+    <div id="divNit" class="form-group row">
+        <label for="inputNit" class="col-sm-2 col-form-label">NIT: </label>
+        <div class="col-sm-10">
+            <input name="nit" type="text" class="form-control" id="inputNit">
+        </div>
+    </div>
+    <div id="divEmail" class="form-group row">
+        <label for="inputEmail" class="col-sm-2 col-form-label">Email: </label>
+        <div class="col-sm-10">
+            <input name="email" type="email" class="form-control" id="inputEmail">
+        </div>
+    </div>
+    <div id="divTelefono" class="form-group row">
+        <label for="inputTelefono" class="col-sm-2 col-form-label">Teléfono: </label>
+        <div class="col-sm-10">
+            <input name="telefono" type="text" class="form-control" id="inputTelefono">
+        </div>
+    </div>
+    <div id="divDireccion" class="form-group row">
+        <label for="inputDireccion" class="col-sm-2 col-form-label">Direccion: </label>
+        <div class="col-sm-10">
+            <input name="direccion" type="text" class="form-control" id="inputDireccion">
+        </div>
+    </div>
+    <div id="divBotones" class="form-group">
+        <div>
+            <input type="submit" class="btn btn-secondary" value="Registrar">
+            <input type="button" class="btn btn-secondary" value="Reiniciar Campos">
+            <input type="button" class="btn btn-secondary" value="Cancelar">
+        </div>
+    </div>
+</form>
