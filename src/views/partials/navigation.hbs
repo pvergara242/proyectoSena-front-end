@@ -1,39 +1,50 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <div class="container">
-        <a class="navbar-brand" href="/">Nova_Stock</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
-                <li class="nav-item active">
-                    <a class="nav-link" href="/">SOBRE NOSOTROS<span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/productos">PRODUCTOS</a>
-                </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="/Usuarios">USUARIOS</a>
-                </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="/Proveedores">PROVEEDORES</a>
-                </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="/Factura">FACTURA</a>
-                </li>
-            </ul>
-           <ul class="navbar-nav ml-auto">
-            {{#if usuario}}
-              <li class="nav-item">
-                    <a href="/Logout" class="nav-link">Hola {{usuarioInfo.nombres}}</a>
-              </li>
-            {{else}}
-              <li class="nav-item">
-                    <a href="/Login" class="nav-link">login</a>
-               </li>
-            {{/if}}
-           </ul>
-        </div>
+  <div class="container">
+    <a class="navbar-brand" href="/">Nova_Stock</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item active">
+          <a class="nav-link" href="/">SOBRE NOSOTROS<span class="sr-only">(current)</span></a>
+        </li>
+        {{#if usuario}}
+        <li class="nav-item">
+          <a class="nav-link" href="/productos">PRODUCTOS</a>
+        </li>
+        {{/if}}
+        {{#if usuario}}
+        <li class="nav-item">
+          <a class="nav-link" href="/Usuarios">USUARIOS</a>
+        </li>
+        {{/if}}
+        {{#if usuario}}
+        <li class="nav-item">
+          <a class="nav-link" href="/Proveedores">PROVEEDORES</a>
+        </li>
+        {{/if}}
+        {{#if usuario}}
+        <li class="nav-item">
+          <a class="nav-link" href="/Factura">FACTURA</a>
+        </li>
+        {{/if}}
+      </ul>
+      <ul class="navbar-nav ml-auto">
+        {{#if usuario}}
+        <li class="nav-item">
+          <a class="nav-link">Hola {{usuarioInfo.nombres}}</a>
+        </li>
+        <li class="nav-item">
+          <a href="/Logout" class="nav-link">Salir</a>
+        </li>
+        {{else}}
+        <li class="nav-item">
+          <a href="/Login" class="nav-link">Login</a>
+        </li>
+        {{/if}}
+      </ul>
     </div>
+  </div>
 </nav>

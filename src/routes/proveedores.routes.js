@@ -1,23 +1,19 @@
 var express = require('express');
 var router = express.Router();
+const auth = require("../configuration/authFilter");
 // crud 
 const {
     crearProveedor,
-    renderProveedores
+    renderProveedores,
+    renderEditarProveedor,
+    renderActualizarProveedor
 } = require('../controllers/proveedores.controller');
 
 router.post('/proveedores/new-proveedor', crearProveedor);
 router.get('/proveedores/all', renderProveedores);
-router.use(function(err, req, res, next) {
-    if (!err) {
-        console.log(err);
-    }
+router.get('/proveedores/edit/:id', renderEditarProveedor);
+router.post('/proveedores/actualizar-proveedor', renderActualizarProveedor);
 
-    if (err.response.status === 401) {
-        res.redirect('/Login');
-    } else {
-        res.redirect('/Error');
-    }
-});
+router.use(auth.secureEndpoints);
 
 module.exports = router

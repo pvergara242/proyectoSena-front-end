@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+const auth = require("../configuration/authFilter");
 
 // conexion con las interfaces 
 const {
@@ -13,6 +14,10 @@ const {
     renderLogout
 } = require('../controllers/index.controler')
 
+router.use('/Proveedores', auth.filter);
+router.use('/Usuarios', auth.filter);
+router.use('/Factura', auth.filter);
+
 router.get('/', renderIndex);
 router.get('/About', renderAbout);
 router.get('/productos', renderproductos);
@@ -22,18 +27,7 @@ router.get('/Factura', renderFactura);
 router.get('/Login', renderLogin);
 router.get('/Logout', renderLogout);
 
-router.use(function(err, req, res, next) {
-    if (!err) {
-        console.log(err);
-    }
-
-    if (err.response.status === 401) {
-        res.redirect('/Login');
-    } else {
-        console.log(err.response.status);
-        res.redirect('/Error');
-    }
-});
+router.use(auth.secureEndpoints);
 
 //exportamos routes
 module.exports = router;

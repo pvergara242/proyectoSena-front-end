@@ -31,5 +31,33 @@ proveedoresCtrl.renderProveedores = async(req, res, next) => {
         });
 };
 
+proveedoresCtrl.renderEditarProveedor = async(req, res, next) => {
+    rest.get(req, '/api/v1/proveedores/' + req.params.id)
+    .then(result => {
+        res.render('proveedores/edit-proveedores', { proveedor: result.data });
+    })
+    .catch(err => {
+        next(err);
+    }); 
+};
+
+proveedoresCtrl.renderActualizarProveedor = async (req, res, next) => {
+    var requestBody = {
+        "nombre": req.body.nombre,
+        "nit": req.body.nit,
+        "email": req.body.email,
+        "telefono": req.body.telefono,
+        "direccion": req.body.direccion
+    }
+    
+    rest.put(req, '/api/v1/proveedores/' + req.body.proveedorId, requestBody)
+        .then(result => {
+        res.redirect('/proveedores/all');
+    })
+    .catch(err => {
+        next(err);
+    });
+};
+
 // exportamos el modelo de las notas 
 module.exports = proveedoresCtrl;
