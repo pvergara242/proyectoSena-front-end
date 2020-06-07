@@ -5,6 +5,7 @@ var router = express.Router();
 const {
     renderIndex,
     renderAbout,
+    renderproductos,
     renderUsuarios,
     renderProveedores,
     renderFactura,
@@ -14,6 +15,7 @@ const {
 
 router.get('/', renderIndex);
 router.get('/About', renderAbout);
+router.get('/productos', renderproductos);
 router.get('/Usuarios', renderUsuarios);
 router.get('/Proveedores', renderProveedores);
 router.get('/Factura', renderFactura);
