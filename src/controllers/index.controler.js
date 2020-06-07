@@ -7,6 +7,9 @@ indexCrl.renderIndex = (req, res) => {
 indexCrl.renderAbout = (req, res) => {
     res.render('About')
 };
+indexCrl.renderproductos = (req, res) => {
+    res.render('productos')
+};
 
 indexCrl.renderUsuarios = (req, res) => {
     res.render('Usuarios')

@@ -13,14 +13,14 @@ authCtrl.ejecutarLogin = async (req, res, next) => {
             res.cookie('token', result.data.token, {
               maxAge: 60 * 60 * 1000, // 1 hour
               httpOnly: true,
-              secure: true,
+              //secure: true, //TODO Habilitar para HTTPS
               sameSite: true,
               path: '/'
             });
             res.cookie('usuario', JSON.stringify(result.data.usuario), {
               maxAge: 60 * 60 * 1000, // 1 hour
               httpOnly: true,
-              secure: true,
+              //secure: true, //TODO Habilitar para HTTPS
               sameSite: true,
               path: '/'
             });
