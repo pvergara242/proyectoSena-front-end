@@ -28,7 +28,11 @@ usuariosCtrl.crearUsuario = async (req, res, next) => {
 };
 
 usuariosCtrl.renderUsuarios = async(req, res, next) => {
-    rest.get(req, '/api/v1/usuarios')
+    const params = {
+        includeInactive: true
+    };
+
+    rest.get(req, '/api/v1/usuarios', params)
     .then(result => {
         let data = result.data;
         res.render('usuarios/all-usuarios', { usuarios: data });

@@ -27,9 +27,7 @@
                         </button>
                     </td>
                     <td>
-                        <button>
-                            Inactivar
-                        </button>
+                        <input type="checkbox" {{#if (verificarEstado estado 'Activo')}}checked{{/if}} data-toggle="toggle" data-on="Activo" data-off="Inactivo" data-onstyle="success" data-offstyle="danger">
                     </td>
                 </tr>
                 {{/each}}

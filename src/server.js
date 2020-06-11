@@ -2,6 +2,8 @@ const express = require('express');
 const exphbs = require('express-handlebars');
 const path = require('path');
 const morgan = require('morgan');
+require('./js/usuarios');
+require('./js/utilities');
 
 //inicializaciones
 const app = express();

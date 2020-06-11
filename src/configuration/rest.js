@@ -27,12 +27,13 @@ rest.put = (req, url, requestBody) => {
     return axios.put(endpoints.backendHost + url, requestBody, options);
 }
 
-rest.get = (req, url) => {
+rest.get = (req, url, params) => {
 
 	let options = {
-        params:{},
-        headers: { 'Content-Type': 'application/json' }
-    }
+        headers: { 'Content-Type': 'application/json' },
+        params: params
+    };
+    
     if (req.headers.authorization) {
         options.headers['Authorization'] = req.headers.authorization;
     }

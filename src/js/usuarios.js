@@ -13,7 +13,3 @@ hbs.handlebars.registerHelper('verificarGenero', function(genero, tipo) {
 hbs.handlebars.registerHelper('verificarTipoDoc', function(tipoDoc, tipo) {
     return tipoDoc.toLowerCase() == tipo.toLowerCase();
 })
-
-hbs.handlebars.registerHelper("inc", function(value, options) {
-    return parseInt(value) + 1;
-});
