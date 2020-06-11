@@ -26,13 +26,42 @@
                         </button>
                     </td>
                     <td>
-                        <button>
-                            Inactivar
-                        </button>
+                        <input type="checkbox" {{#if (verificarEstado estado 'Activo')}}checked{{/if}} data-toggle="toggle" data-on="Activo" data-off="Inactivo" data-onstyle="success" data-offstyle="danger" onchange="functionTest(this, ' + {{_id}} + ');">
                     </td>
                 </tr>
                 {{/each}}
             </tbody>
         </table>
     </div>
+    <script type="text/javascript">
+        function functionTest(e, identifier){
+          console.log(e.checked);
+          console.log(identifier);
+
+          const XHR = new XMLHttpRequest();
+
+          // Define what happens on successful data submission
+          XHR.addEventListener( 'load', function(event) {
+            alert( 'Yeah! Data sent and response loaded.' );
+          } );
+
+          // Define what happens in case of error
+          XHR.addEventListener( 'error', function(event) {
+            alert( 'Oops! Something went wrong.' );
+          } );
+
+          // Set up our request
+          if (e.checked) {
+            XHR.open( 'POST', '/usuarios/habilitar' );
+          } else {
+            XHR.open( 'POST', '/usuarios/deshabilitar' );
+          }
+
+          // Add the required HTTP header for form data POST requests
+          XHR.setRequestHeader( 'Content-Type', 'application/x-www-form-urlencoded' );
+
+          // Finally, send our data.
+          XHR.send( { id : identifier} );
+        }    
+    </script>
 </div>
