@@ -2,6 +2,7 @@ const express = require('express');
 const exphbs = require('express-handlebars');
 const path = require('path');
 const morgan = require('morgan');
+var bodyParser = require("body-parser");
 require('./js/usuarios');
 require('./js/utilities');
 
@@ -19,6 +20,7 @@ app.engine('.hbs', exphbs({
 }));
 
 app.set('view engine', '.hbs');
+app.use(bodyParser.json());
 
 //middlewares
 app.use(morgan('dev'));

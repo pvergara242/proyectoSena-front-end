@@ -41,4 +41,30 @@ rest.get = (req, url, params) => {
     return axios.get(endpoints.backendHost + url, options);
 }
 
+rest.delete = (req, url, params) => {
+
+    let options = {
+        headers: { 'Content-Type': 'application/json' },
+        params: params
+    };
+    
+    if (req.headers.authorization) {
+        options.headers['Authorization'] = req.headers.authorization;
+    }
+    
+    return axios.delete(endpoints.backendHost + url, options);
+}
+
+rest.patch = (req, url, requestBody) => {
+    let options = {
+        params:{},
+        headers: { 'Content-Type': 'application/json' }
+    }
+    if (req.headers.authorization) {
+        options.headers['Authorization'] = req.headers.authorization;
+    }
+    
+    return axios.patch(endpoints.backendHost + url, requestBody, options);
+}
+
 module.exports = rest;
