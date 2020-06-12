@@ -26,7 +26,7 @@
                         </button>
                     </td>
                     <td>
-                        <input id="toggle-estado-{{inc @index}}" type="checkbox" {{#if (verificarEstado estado 'Activo')}}checked{{/if}} data-toggle="toggle" data-on="Activo" data-off="Inactivo" data-onstyle="success" data-offstyle="danger" onchange="functionTest(this, '{{_id}}');">
+                        <input id="toggle-estado-{{inc @index}}" type="checkbox" {{#if (verificarEstado estado 'Activo')}}checked{{/if}} data-toggle="toggle" data-on="Activo" data-off="Inactivo" data-onstyle="success" data-offstyle="danger" onchange="estadoToggleOnChange(this, '{{_id}}');">
                     </td>
                 </tr>
                 {{/each}}
@@ -34,7 +34,7 @@
         </table>
     </div>
     <script type="text/javascript">
-        function functionTest(e, identifier){
+        function estadoToggleOnChange(e, identifier){
           const XHR = new XMLHttpRequest();
 
           // Define what happens on successful data submission
@@ -42,13 +42,11 @@
             if(XHR.readyState === XMLHttpRequest.DONE) {
                 var status = XHR.status;
                 if (status === 0 || (status >= 200 && status < 400)) {
-                  // The request has been completed successfully
-                  console.log(XHR.responseText);
-                  alert( 'Data sent successfully' );
+                  alert( 'Operacion realizada exitosamente.' );
                 } else {
                   // Oh no! There has been an error with the request!
                   console.log('Status error code: ', status);
-                  alert( 'Error received');
+                  alert( 'Error al ejecutar la operacion.');
                   if (!e.checked) {
                     var toggle = $('#' + e.id).data('bs.toggle');
                     toggle.on(true);
@@ -64,19 +62,14 @@
           if (e.checked) {
             XHR.open( 'POST', '/usuarios/habilitar-usuario' );
           } else {
-            console.log('Llamando a deshabilitar...');
             XHR.open( 'POST', '/usuarios/deshabilitar-usuario' );
           }
-
-          // Add the required HTTP header for form data POST requests
-          XHR.setRequestHeader('Content-type','application/json; charset=utf-8');
 
           var data = {};
           data.id = identifier;
           let json = JSON.stringify(data);
 
-          console.log('POST: ', json);
-
+          XHR.setRequestHeader('Content-type','application/json; charset=utf-8');
           XHR.send( json );
         }    
     </script>
