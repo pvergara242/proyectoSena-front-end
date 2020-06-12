@@ -80,5 +80,27 @@ usuariosCtrl.renderActualizarUsuario = async (req, res, next) => {
     });
 };
 
+usuariosCtrl.deshabilitarUsuario = async(req, res, next) => {
+    rest.delete(req, '/api/v1/usuarios/' + req.body.id)
+    .then(result => {
+        res.status(204);
+        res.send();
+    })
+    .catch(err => {
+        next(err);
+    }); 
+};
+
+usuariosCtrl.habilitarUsuario = async(req, res, next) => {
+    rest.patch(req, '/api/v1/usuarios/' + req.body.id + '/activate')
+    .then(result => {
+        res.status(204);
+        res.send();
+    })
+    .catch(err => {
+        next(err);
+    }); 
+};
+
 // exportamos el modelo de las notas 
 module.exports = usuariosCtrl;

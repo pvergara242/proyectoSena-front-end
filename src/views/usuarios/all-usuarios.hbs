@@ -26,7 +26,7 @@
                         </button>
                     </td>
                     <td>
-                        <input type="checkbox" {{#if (verificarEstado estado 'Activo')}}checked{{/if}} data-toggle="toggle" data-on="Activo" data-off="Inactivo" data-onstyle="success" data-offstyle="danger" onchange="functionTest(this, ' + {{_id}} + ');">
+                        <input id="toggle-estado-{{inc @index}}" type="checkbox" {{#if (verificarEstado estado 'Activo')}}checked{{/if}} data-toggle="toggle" data-on="Activo" data-off="Inactivo" data-onstyle="success" data-offstyle="danger" onchange="functionTest(this, '{{_id}}');">
                     </td>
                 </tr>
                 {{/each}}
@@ -35,33 +35,49 @@
     </div>
     <script type="text/javascript">
         function functionTest(e, identifier){
-          console.log(e.checked);
-          console.log(identifier);
-
           const XHR = new XMLHttpRequest();
 
           // Define what happens on successful data submission
           XHR.addEventListener( 'load', function(event) {
-            alert( 'Yeah! Data sent and response loaded.' );
-          } );
-
-          // Define what happens in case of error
-          XHR.addEventListener( 'error', function(event) {
-            alert( 'Oops! Something went wrong.' );
+            if(XHR.readyState === XMLHttpRequest.DONE) {
+                var status = XHR.status;
+                if (status === 0 || (status >= 200 && status < 400)) {
+                  // The request has been completed successfully
+                  console.log(XHR.responseText);
+                  alert( 'Data sent successfully' );
+                } else {
+                  // Oh no! There has been an error with the request!
+                  console.log('Status error code: ', status);
+                  alert( 'Error received');
+                  if (!e.checked) {
+                    var toggle = $('#' + e.id).data('bs.toggle');
+                    toggle.on(true);
+                  } else {
+                    var toggle = $('#' + e.id).data('bs.toggle');
+                    toggle.off(true);
+                  }                    
+                }
+              }
           } );
 
           // Set up our request
           if (e.checked) {
-            XHR.open( 'POST', '/usuarios/habilitar' );
+            XHR.open( 'POST', '/usuarios/habilitar-usuario' );
           } else {
-            XHR.open( 'POST', '/usuarios/deshabilitar' );
+            console.log('Llamando a deshabilitar...');
+            XHR.open( 'POST', '/usuarios/deshabilitar-usuario' );
           }
 
           // Add the required HTTP header for form data POST requests
-          XHR.setRequestHeader( 'Content-Type', 'application/x-www-form-urlencoded' );
+          XHR.setRequestHeader('Content-type','application/json; charset=utf-8');
 
-          // Finally, send our data.
-          XHR.send( { id : identifier} );
+          var data = {};
+          data.id = identifier;
+          let json = JSON.stringify(data);
+
+          console.log('POST: ', json);
+
+          XHR.send( json );
         }    
     </script>
 </div>
