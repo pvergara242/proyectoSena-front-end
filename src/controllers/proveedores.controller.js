@@ -21,7 +21,11 @@ proveedoresCtrl.crearProveedor = async (req, res, next) => {
 };
 
 proveedoresCtrl.renderProveedores = async(req, res, next) => {
-    rest.get(req, '/api/v1/proveedores')
+    const params = {
+        includeInactive: true
+    };
+
+    rest.get(req, '/api/v1/proveedores', params)
         .then(result => {
             //$('#exampleModal').modal('show');
             res.render('proveedores/all-proveedores', { proveedores: result.data });
@@ -57,6 +61,28 @@ proveedoresCtrl.renderActualizarProveedor = async (req, res, next) => {
     .catch(err => {
         next(err);
     });
+};
+
+proveedoresCtrl.deshabilitarProveedor = async(req, res, next) => {
+    rest.delete(req, '/api/v1/proveedores/' + req.body.id)
+    .then(result => {
+        res.status(204);
+        res.send();
+    })
+    .catch(err => {
+        next(err);
+    }); 
+};
+
+proveedoresCtrl.habilitarProveedor = async(req, res, next) => {
+    rest.patch(req, '/api/v1/proveedores/' + req.body.id + '/activate')
+    .then(result => {
+        res.status(204);
+        res.send();
+    })
+    .catch(err => {
+        next(err);
+    }); 
 };
 
 // exportamos el modelo de las notas 

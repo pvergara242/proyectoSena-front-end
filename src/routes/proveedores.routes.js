@@ -6,13 +6,17 @@ const {
     crearProveedor,
     renderProveedores,
     renderEditarProveedor,
-    renderActualizarProveedor
+    renderActualizarProveedor,
+    deshabilitarProveedor,
+    habilitarProveedor
 } = require('../controllers/proveedores.controller');
 
 router.post('/proveedores/new-proveedor', crearProveedor);
 router.get('/proveedores/all', renderProveedores);
 router.get('/proveedores/edit/:id', renderEditarProveedor);
 router.post('/proveedores/actualizar-proveedor', renderActualizarProveedor);
+router.post('/proveedores/deshabilitar', deshabilitarProveedor);
+router.post('/proveedores/habilitar', habilitarProveedor);
 
 router.use(auth.secureEndpoints);
 
