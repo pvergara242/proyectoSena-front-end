@@ -1,7 +1,7 @@
 const usuariosCtrl = {};
 const rest = require('../configuration/rest');
 
-// crear las notas y renderiza una nueva pagina 
+// crear un nuevo usuari y renderiza una nueva pagina 
 usuariosCtrl.crearUsuario = async (req, res, next) => {
     var requestBody = {
         "tipoDocumento": req.body.tipoDocumento,

@@ -1,3 +1,5 @@
+
+// requerimos las dependencias instaladas anteriormente
 var express = require('express');
 var router = express.Router();
 const auth = require("../configuration/authFilter");
