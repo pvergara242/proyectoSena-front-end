@@ -51,6 +51,7 @@ app.use(function(req, res, next) {
 app.use(require('./routes/indexroutes'));
 app.use(require('./routes/usuarios.routes'));
 app.use(require('./routes/proveedores.routes'));
+app.use(require('./routes/productos.routes'));
 app.use(require('./routes/auth.routes'));
 
 //static files 

@@ -1,7 +1,7 @@
 const proveedoresCtrl = {};
 const rest = require('../configuration/rest');
 
-// crear las notas y renderiza una nueva pagina 
+// crear proveedor y renderiza una nueva pagina 
 proveedoresCtrl.crearProveedor = async (req, res, next) => {
     var requestBody = {
         "nombre": req.body.nombre,
@@ -10,7 +10,7 @@ proveedoresCtrl.crearProveedor = async (req, res, next) => {
         "telefono": req.body.telefono,
         "direccion": req.body.direccion
     }
-    
+    // consultar los proveedores
     rest.post(req, '/api/v1/proveedores', requestBody)
         .then(result => {
             res.redirect('/proveedores/all');
@@ -45,6 +45,7 @@ proveedoresCtrl.renderEditarProveedor = async(req, res, next) => {
     }); 
 };
 
+// actualiza los datos de un proveedor 
 proveedoresCtrl.renderActualizarProveedor = async (req, res, next) => {
     var requestBody = {
         "nombre": req.body.nombre,
@@ -54,6 +55,7 @@ proveedoresCtrl.renderActualizarProveedor = async (req, res, next) => {
         "direccion": req.body.direccion
     }
     
+    // 
     rest.put(req, '/api/v1/proveedores/' + req.body.proveedorId, requestBody)
         .then(result => {
         res.redirect('/proveedores/all');
