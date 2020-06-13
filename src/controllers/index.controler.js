@@ -1,4 +1,5 @@
 const indexCrl = {};
+const rest = require('../configuration/rest');
 // renderizar la conexion con las interfaces de las paginas 
 indexCrl.renderIndex = (req, res) => {
     res.render('index')
@@ -8,7 +9,18 @@ indexCrl.renderAbout = (req, res) => {
     res.render('About')
 };
 indexCrl.renderproductos = (req, res) => {
-    res.render('productos')
+    const params = {
+        includeInactive: false
+    };
+
+    rest.get(req, '/api/v1/proveedores', params)
+        .then(result => {
+            //$('#exampleModal').modal('show');
+            res.render('productos', { proveedores: result.data });
+        })
+        .catch(err => {
+            next(err);
+        });
 };
 
 indexCrl.renderUsuarios = (req, res) => {
