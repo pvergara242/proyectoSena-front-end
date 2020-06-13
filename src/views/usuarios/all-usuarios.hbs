@@ -41,12 +41,15 @@
           XHR.addEventListener( 'load', function(event) {
             if(XHR.readyState === XMLHttpRequest.DONE) {
                 var status = XHR.status;
+                var modal = $('#myModal');
                 if (status === 0 || (status >= 200 && status < 400)) {
-                  alert( 'Operacion realizada exitosamente.' );
+                  modal.find('.modal-body h4').text('Operación realizada exitosamente');
+                  modal.modal('show');
                 } else {
-                  // Oh no! There has been an error with the request!
                   console.log('Status error code: ', status);
-                  alert( 'Error al ejecutar la operacion.');
+                  modal.find('.modal-title').text('Error');
+                  modal.find('.modal-body h4').text('Error al ejecutar la operacion.');
+                  modal.modal('show');
                   if (!e.checked) {
                     var toggle = $('#' + e.id).data('bs.toggle');
                     toggle.on(true);
