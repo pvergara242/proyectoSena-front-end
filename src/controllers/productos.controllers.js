@@ -4,10 +4,10 @@ const rest = require('../configuration/rest');
 // crear proveedor y renderiza una nueva pagina 
 productosCtrl.crearProductos = async (req, res, next) => {
     var requestBody = {
+        "proveedor": req.body.proveedor,
         "nombre": req.body.nombre,
         "descripcion": req.body.descripcion,
         "tipo": req.body.tipo,
-        "fechaVencimiento": req.body.fv,
         "precio": req.body.precio
     }
     // consultar los proveedores
@@ -48,7 +48,6 @@ productosCtrl.renderActualizarProductos = async (req, res, next) => {
         "nombre": req.body.nombre,
         "descripcion": req.body.descripcion,
         "tipo": req.body.tipo,
-        "fechaVencimiento": req.body.fv,
         "precio": req.body.precio
     }
     

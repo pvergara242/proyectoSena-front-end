@@ -2,41 +2,40 @@
 <form action="/productos/actualizar-productos" method="post" id="formulario">
     <legend>DATOS DE PRODUCTOS</legend>
     <input type="hidden" value="{{productos._id}}" name="productosId" />
+    <div id="divProveedor" class="form-group row">
+        <label for="inputProveedor" class="col-sm-2 col-form-label">Proveedor: </label>
+        <div class="col-sm-10">
+            <input name="nombre" readonly="true" type="text" class="form-control" id="inputProveedor" value="{{productos.proveedor.nombre}}">
+        </div>
+    </div>
     <div id="divNombre" class="form-group row">
         <label for="inputNombre" class="col-sm-2 col-form-label">Nombre: </label>
         <div class="col-sm-10">
             <input name="nombre" type="text" class="form-control" id="inputNombre" value="{{productos.nombre}}">
         </div>
     </div>
-    <div id="divNit" class="form-group row">
-        <label for="inputNit" class="col-sm-2 col-form-label">descripcion: </label>
+    <div id="divDescripcion" class="form-group row">
+        <label for="inputDescripcion" class="col-sm-2 col-form-label">Descripcion: </label>
         <div class="col-sm-10">
-            <input name="descripcion" type="text" class="form-control" id="inputNit" value="{{productos.descripcion}}">
+            <input name="descripcion" type="text" class="form-control" id="inputDescripcion" value="{{productos.descripcion}}">
         </div>
     </div>
-    <div id="divEmail" class="form-group row">
-        <label for="inputEmail" class="col-sm-2 col-form-label">Tipo: </label>
+    <div id="divTipo" class="form-group row">
+        <label for="inputTipo" class="col-sm-2 col-form-label">Tipo: </label>
         <div class="col-sm-10">
-            <input name="tipo" type="text" class="form-control" id="inputEmail" value="{{productos.tipo}}">
+            <input name="tipo" type="text" class="form-control" id="inputTipo" value="{{productos.tipo}}">
         </div>
     </div>
-     <div id="divEmail" class="form-group row">
-        <label for="fecv" class="col-sm-2 col-form-label">fecha vencimiento: </label>
+     <div id="divPrecio" class="form-group row">
+        <label for="inputPrecio" class="col-sm-2 col-form-label">Precio: </label>
         <div class="col-sm-10">
-            <input name="fv" type="date" class="form-control" id="fecv" value="{{productos.fechaVencimiento}}">
-        </div>
-        </div>
-    </div>
-     <div id="divEmail" class="form-group row">
-        <label for="inputprecio" class="col-sm-2 col-form-label">precio: </label>
-        <div class="col-sm-10">
-            <input name="precio" type="text" class="form-control" id="precio" value="{{productos.precio}}">
+            <input name="precio" type="text" class="form-control" id="inputPrecio" value="{{productos.precio}}">
         </div>
     </div>
     <div id="divBotones" class="form-group">
         <div>
             <input type="submit" class="btn btn-secondary" value="Guardar">
-            <input type="button" class="btn btn-secondary" value="Reiniciar Campos" onclick="window.location.href='/productos/edit/{{proveedor._id}}'">
+            <input type="button" class="btn btn-secondary" value="Reiniciar Campos" onclick="window.location.href='/productos/edit/{{productos._id}}'">
             <input type="button" class="btn btn-secondary" value="Cancelar" onClick="window.location.href='/productos/all'">
         </div>
     </div>
