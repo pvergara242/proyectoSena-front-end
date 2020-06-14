@@ -22,7 +22,7 @@
         "express": "^4.17.1",
         "express-handlebars": "^4.0.3",
         "express-session": "^1.17.1",
-        "jquery": "^1.9.1",
+        "jquery": "^3.5.0",
         "local-auth": "0.0.3",
         "method-override": "^3.0.0",
         "morgan": "^1.10.0",
