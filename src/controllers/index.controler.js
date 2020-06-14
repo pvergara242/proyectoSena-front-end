@@ -8,14 +8,13 @@ indexCrl.renderIndex = (req, res) => {
 indexCrl.renderAbout = (req, res) => {
     res.render('About')
 };
-indexCrl.renderproductos = (req, res) => {
+indexCrl.renderproductos = (req, res, next) => {
     const params = {
         includeInactive: false
     };
 
     rest.get(req, '/api/v1/proveedores', params)
         .then(result => {
-            //$('#exampleModal').modal('show');
             res.render('productos', { proveedores: result.data });
         })
         .catch(err => {

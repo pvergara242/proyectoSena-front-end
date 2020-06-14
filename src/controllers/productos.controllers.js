@@ -8,7 +8,6 @@ productosCtrl.crearProductos = async (req, res, next) => {
         "nombre": req.body.nombre,
         "descripcion": req.body.descripcion,
         "tipo": req.body.tipo,
-        "fechaVencimiento": req.body.fv,
         "precio": req.body.precio
     }
     // consultar los proveedores
@@ -49,7 +48,6 @@ productosCtrl.renderActualizarProductos = async (req, res, next) => {
         "nombre": req.body.nombre,
         "descripcion": req.body.descripcion,
         "tipo": req.body.tipo,
-        "fechaVencimiento": req.body.fv,
         "precio": req.body.precio
     }
     
