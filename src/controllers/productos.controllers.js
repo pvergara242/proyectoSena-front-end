@@ -21,10 +21,12 @@ productosCtrl.crearProductos = async (req, res, next) => {
 };
 
 productosCtrl.renderProductos = async(req, res, next) => {
-    rest.get(req, '/api/v1/productos')
+    const params = {
+        includeInactive: true
+    };
+
+    rest.get(req, '/api/v1/productos', params)
         .then(result => {
-            console.log('productos: ', result.data);
-            //$('#exampleModal').modal('show');
             res.render('productos/all-productos', { productos: result.data });
         })
         .catch(err => {
@@ -59,6 +61,28 @@ productosCtrl.renderActualizarProductos = async (req, res, next) => {
     .catch(err => {
         next(err);
     });
+};
+
+productosCtrl.deshabilitarProducto = async(req, res, next) => {
+    rest.delete(req, '/api/v1/productos/' + req.body.id)
+    .then(result => {
+        res.status(204);
+        res.send();
+    })
+    .catch(err => {
+        next(err);
+    }); 
+};
+
+productosCtrl.habilitarProducto = async(req, res, next) => {
+    rest.patch(req, '/api/v1/productos/' + req.body.id + '/activate')
+    .then(result => {
+        res.status(204);
+        res.send();
+    })
+    .catch(err => {
+        next(err);
+    }); 
 };
 
 // exportamos el modelo de las notas 
