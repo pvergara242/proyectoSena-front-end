@@ -16,39 +16,50 @@
             <tbody>
                 {{#each productos}}
                 <tr>
-                    <th scope="row">{{inc @index}}</th>
-                    <td>{{nombre}}</td>
-                    <td>{{descripcion}}</td>
-                    <td>{{tipo}}</td>
-                     <td>{{precio}}</td>
-                    <td>
-                        <button onclick="location.href='/productos/edit/{{_id}}';">
-                            Editar
-                        </button>
+                  <th scope="row">{{inc @index}}</th>
+                  <td>{{nombre}}</td>
+                  <td>{{descripcion}}</td>
+                  <td>{{tipo}}</td>
+                   <td>{{precio}}</td>
+                  <td>
+                      <button onclick="location.href='/productos/edit/{{_id}}';">
+                          Editar
+                      </button>
+                  </td>
+                  <td>
+                        <input id="toggle-estado-{{inc @index}}" type="checkbox" {{#if (verificarEstado estado 'Activo')}}checked{{/if}} data-toggle="toggle" data-on="Activo" data-off="Inactivo" data-onstyle="success" data-offstyle="danger" onchange="functionTest(this, '{{_id}}');">
                     </td>
-                    <td>
-                          <input type="checkbox" {{#if (verificarEstado estado 'Activo')}}checked{{/if}} data-toggle="toggle" data-on="Activo" data-off="Inactivo" data-onstyle="success" data-offstyle="danger" onchange="functionTest(this, ' + {{_id}} + ');">
-                      </td>
-                  </tr>
-                  {{/each}}
-              </tbody>
-          </table>
-      </div>
-      <script type="text/javascript">
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    </div>
+    <script type="text/javascript">
           function functionTest(e, identifier){
-            console.log(e.checked);
-            console.log(identifier);
-
             const XHR = new XMLHttpRequest();
 
             // Define what happens on successful data submission
             XHR.addEventListener( 'load', function(event) {
-              alert( 'Yeah! Data sent and response loaded.' );
-            } );
-
-            // Define what happens in case of error
-            XHR.addEventListener( 'error', function(event) {
-              alert( 'Oops! Something went wrong.' );
+              if(XHR.readyState === XMLHttpRequest.DONE) {
+                var status = XHR.status;
+                var modal = $('#myModal');
+                if (status === 0 || (status >= 200 && status < 400)) {
+                  modal.find('.modal-body h4').text('Operación realizada exitosamente');
+                  modal.modal('show');
+                } else {
+                  console.log('Status error code: ', status);
+                  modal.find('.modal-title').text('Error');
+                  modal.find('.modal-body h4').text('Error al ejecutar la operacion.');
+                  modal.modal('show');
+                  if (!e.checked) {
+                    var toggle = $('#' + e.id).data('bs.toggle');
+                    toggle.on(true);
+                  } else {
+                    var toggle = $('#' + e.id).data('bs.toggle');
+                    toggle.off(true);
+                  }                    
+                }
+              }
             } );
 
             // Set up our request
@@ -58,14 +69,12 @@
               XHR.open( 'POST', '/productos/deshabilitar' );
             }
 
-            // Add the required HTTP header for form data POST requests
-            XHR.setRequestHeader( 'Content-Type', 'application/x-www-form-urlencoded' );
+            var data = {};
+            data.id = identifier;
+            let json = JSON.stringify(data);
 
-            // Finally, send our data.
-            XHR.send( { id : identifier} );
+            XHR.setRequestHeader('Content-type','application/json; charset=utf-8');
+            XHR.send( json );
           }    
       </script>
-            </tbody>
-        </table>
-    </div>
 </div>
