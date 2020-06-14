@@ -23,8 +23,6 @@ productosCtrl.crearProductos = async (req, res, next) => {
 productosCtrl.renderProductos = async(req, res, next) => {
     rest.get(req, '/api/v1/productos')
         .then(result => {
-            console.log('productos: ', result.data);
-            //$('#exampleModal').modal('show');
             res.render('productos/all-productos', { productos: result.data });
         })
         .catch(err => {
