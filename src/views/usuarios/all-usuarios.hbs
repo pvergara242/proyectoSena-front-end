@@ -41,7 +41,7 @@
           XHR.addEventListener( 'load', function(event) {
             if(XHR.readyState === XMLHttpRequest.DONE) {
                 var status = XHR.status;
-                var modal = $('#myModal');
+                var modal = $('#applicationModal');
                 if (status === 0 || (status >= 200 && status < 400)) {
                   modal.find('.modal-body h4').text('Operación realizada exitosamente');
                   modal.modal('show');

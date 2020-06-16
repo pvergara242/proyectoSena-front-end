@@ -9,6 +9,7 @@ const {
     renderproductos,
     renderUsuarios,
     renderProveedores,
+    renderInventario,
     renderFactura,
     renderLogin,
     renderLogout
@@ -23,6 +24,7 @@ router.get('/About', renderAbout);
 router.get('/productos', renderproductos);
 router.get('/Usuarios', renderUsuarios);
 router.get('/Proveedores', renderProveedores);
+router.get('/inventario', renderInventario);
 router.get('/Factura', renderFactura);
 router.get('/Login', renderLogin);
 router.get('/Logout', renderLogout);

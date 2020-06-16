@@ -4,6 +4,7 @@ const path = require('path');
 const morgan = require('morgan');
 var bodyParser = require("body-parser");
 require('./js/usuarios');
+require('./js/inventario');
 require('./js/utilities');
 
 //inicializaciones
@@ -52,6 +53,7 @@ app.use(require('./routes/indexroutes'));
 app.use(require('./routes/usuarios.routes'));
 app.use(require('./routes/proveedores.routes'));
 app.use(require('./routes/productos.routes'));
+app.use(require('./routes/inventario.routes'));
 app.use(require('./routes/auth.routes'));
 
 //static files 
