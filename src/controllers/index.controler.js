@@ -30,6 +30,20 @@ indexCrl.renderProveedores = (req, res) => {
     res.render('Proveedores')
 };
 
+indexCrl.renderInventario = (req, res, next) => {
+    const params = {
+        includeInactive: false
+    };
+
+    rest.get(req, '/api/v1/productos', params)
+        .then(result => {
+            res.render('inventario', { productos: result.data });
+        })
+        .catch(err => {
+            next(err);
+        });
+};
+
 indexCrl.renderFactura = (req, res) => {
     res.render('Factura')
 };

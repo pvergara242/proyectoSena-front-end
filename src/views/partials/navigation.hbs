@@ -1,91 +1,104 @@
-
 {{!-- barra de navegacion --}}
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <div class="container">
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav">
-            <li class="nav-item active">
-{{!-- muestra la interfaz principal de la informacion del negocio --}}
-            <a class="btn btn-primary" href="/" role="button">SOBRE NOSOTROS</a>
-            </li>
-            {{#if usuario}}
-            <li class="nav-item">
-{{!-- renderiza la tabla de producto con su respectivo formulario --}}
-            <div class="dropdown">
-    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-      PRODUCTOS
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-      <a class="dropdown-item" href="/Productos">Nuevo</a>
-      <a class="dropdown-item" href="/Productos/all">Ver todos</a>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item active">
+          {{!-- muestra la interfaz principal de la informacion del negocio --}}
+          <a class="btn btn-primary" href="/" role="button">SOBRE NOSOTROS</a>
+        </li>
+        {{#if usuario}}
+        <li class="nav-item">
+          {{!-- renderiza la tabla de producto con su respectivo formulario --}}
+          <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            PRODUCTOS
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <a class="dropdown-item" href="/Productos">Nuevo</a>
+              <a class="dropdown-item" href="/Productos/all">Ver todos</a>
+            </div>
+          </div>
+        </li>
+        {{/if}}
+        {{#if usuario}}
+        <li class="nav-item">
+          {{!-- renderiza la tabla de usuarios con su respctivo formulario --}}
+          <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            USUARIOS
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <a class="dropdown-item" href="/Usuarios">Nuevo</a>
+              <a class="dropdown-item" href="/Usuarios/all">Ver todos</a>
+            </div>
+          </div>
+        </li>
+        {{/if}}
+        {{#if usuario}}
+        <li class="nav-item">
+          {{!-- renderiza la tabla de proveedores con su respectivo formulario --}}
+          <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            PROVEEDORES
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <a class="dropdown-item" href="/Proveedores">Nuevo</a>
+              <a class="dropdown-item" href="/Proveedores/all">Ver todos</a>
+            </div>
+          </div>
+        </li>
+        {{/if}}
+        {{#if usuario}}
+        <li class="nav-item">
+          {{!-- renderiza la tabla de proveedores con su respectivo formulario --}}
+          <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButtonInventario" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            INVENTARIO
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButtonInventario">
+              <a class="dropdown-item" href="/inventario">Nuevo</a>
+              <a class="dropdown-item" href="#">Consultar</a>
+            </div>
+          </div>
+        </li>
+        {{/if}}
+        {{#if usuario}}
+        <li class="nav-item">
+          {{!-- renderiza la tabla factura con su respectivo formulario --}}
+          <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            FACTURA
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <a class="dropdown-item" href="/Factura">Nueva factura</a>
+              <a class="dropdown-item" href="">Ver todas las facturas</a>
+            </div>
+          </div>
+        </li>
+        {{/if}}
+      </ul>
+      <ul class="navbar-nav ml-auto">
+        {{#if usuario}}
+        <li class="nav-item">
+          {{!-- muestra el nombre de la persona cuando inicia sesion con su numero de identificacion --}}
+          <a class="nav-link">Hola {{usuarioInfo.nombres}}</a>
+        </li>
+        <li class="nav-item">
+          {{!-- cierra sesion  --}}
+          <a href="/Logout" class="nav-link">Salir</a>
+        </li>
+        {{else}}
+        <li class="nav-item">
+          {{!-- inicia sesion y muestra su respectivo formulario --}}
+          <a href="/Login" class="nav-link">Login</a>
+        </li>
+        {{/if}}
+      </ul>
     </div>
   </div>
-            </li>
-            {{/if}}
-            {{#if usuario}}
-            <li class="nav-item">
-{{!-- renderiza la tabla de usuarios con su respctivo formulario --}}
-              <div class="dropdown">
-    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-      USUARIOS
-    </button>
-    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-      <a class="dropdown-item" href="/Usuarios">Nuevo</a>
-      <a class="dropdown-item" href="/Usuarios/all">Ver todos</a>
-    </div>
-  </div>
-            </li>
-            {{/if}}
-            {{#if usuario}}
-            <li class="nav-item">
-{{!-- renderiza la tabla de proveedores con su respectivo formulario --}}
-            <div class="dropdown">
-    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-      PROVEEDORES
-    </button>
-    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-      <a class="dropdown-item" href="/Proveedores">Nuevo</a>
-      <a class="dropdown-item" href="/Proveedores/all">Ver todos</a>
-    </div>
-  </div>
-            </li>
-            {{/if}}
-            {{#if usuario}}
-            <li class="nav-item">
-{{!-- renderiza la tabla factura con su respectivo formulario --}}
-              <div class="dropdown">
-    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-      FACTURA
-    </button>
-    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-      <a class="dropdown-item" href="/Factura">Nueva factura</a>
-      <a class="dropdown-item" href="">Ver todas las facturas</a>
-    </div>
-  </div>
-            </li>
-            {{/if}}
-          </ul>
-          <ul class="navbar-nav ml-auto">
-            {{#if usuario}}
-            <li class="nav-item">
-{{!-- muestra el nombre de la persona cuando inicia sesion con su numero de identificacion --}}
-              <a class="nav-link">Hola {{usuarioInfo.nombres}}</a>
-            </li>
-            <li class="nav-item">
-{{!-- cierra sesion  --}}
-              <a href="/Logout" class="nav-link">Salir</a>
-            </li>
-            {{else}}
-            <li class="nav-item">
-{{!-- inicia sesion y muestra su respectivo formulario --}}
-              <a href="/Login" class="nav-link">Login</a>
-            </li>
-            {{/if}}
-          </ul>
-        </div>
-      </div>
-    </nav>
+</nav>

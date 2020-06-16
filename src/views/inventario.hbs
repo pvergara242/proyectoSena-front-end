@@ -1,0 +1,45 @@
+{{!-- formulario para registrar un nuevo inventario  --}}
+    <form action="/inventario/new-inventario" method="post" id="formulario">
+        <legend>REGISTRO DE INVENTARIO</legend>
+        <div class="form-group row">
+            <label for="input producto" class="col-sm-2 col-form-label">Producto: </label>
+        <div  class="col-sm-10">
+            <select name="producto" id="producto" class="custom-select" required>
+                {{#each productos}}
+                    <option value="{{_id}}" {{#if (verificarProducto ../inventario _id)}}selected{{/if}}>{{nombre}}</option>
+                {{/each}}
+            </select>
+         </div>
+        </div>
+        <div id="divCodigoBarras" class="form-group row">
+            <label for="inputCodigoBarras" class="col-sm-2 col-form-label">Código de barras: </label>
+            <div class="col-sm-10">
+                <input name="codigoBarras" type="text" class="form-control" id="inputCodigoBarras" {{#if inventario}}value='{{inventario.codigoBarras}}'{{/if}}>
+            </div>
+        </div>
+        <div id="divCantidad" class="form-group row">
+            <label for="inputCantidad" class="col-sm-2 col-form-label">Cantidad: </label>
+            <div class="col-sm-10">
+                <input name="cantidad" type="text" class="form-control" id="inputCantidad" {{#if inventario}}value='{{inventario.cantidad}}'{{/if}}>
+            </div>
+        </div>
+        <div id="divLote" class="form-group row">
+            <label for="inputLote" class="col-sm-2 col-form-label">Lote: </label>
+            <div class="col-sm-10">
+                <input name="lote" type="text" class="form-control" id="inputLote" {{#if inventario}}value='{{inventario.lote}}'{{/if}}>
+            </div>
+        </div>
+        <div id="divFechaVencimiento" class="form-group row">
+            <label for="inputFechaVencimiento" class="col-sm-2 col-form-label">Fecha Vencimiento: </label>
+            <div class="col-sm-10">
+                <input name="fechaVencimiento" type="date" class="form-control" id="inputFechaVencimiento" {{#if inventario}}value='{{inventario.fechaVencimiento}}'{{/if}}>
+            </div>
+        </div>
+        <div id="divBotones" class="form-group">
+            <div>
+                <input type="submit" class="btn btn-secondary" value="Registrar">
+                <input type="button" class="btn btn-secondary" value="Reiniciar Campos" onclick="document.getElementById('formulario').reset()">
+                <input type="button" class="btn btn-secondary" value="Cancelar" onClick="window.location.href='/'">
+            </div>
+        </div>
+    </form>
