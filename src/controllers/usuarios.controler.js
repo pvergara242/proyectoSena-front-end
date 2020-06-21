@@ -29,7 +29,14 @@ usuariosCtrl.crearUsuario = async(req, res, next) => {
         .catch(err => {
             console.log(err);
 
-            var errorMessage = 'Error en la operación';
+            var errorMessage;
+            if (err.response && err.response.status && err.response.status === 400) {
+                errorMessage = 'Parámetros inválidos';
+            } else if (err.response && err.response.status && err.response.status === 401) {
+                return next(err);
+            } else {
+                errorMessage = 'Error en la operación';
+            }
 
             res.render('Usuarios', {
                 modalCompleteMessage: errorMessage,
@@ -70,7 +77,12 @@ usuariosCtrl.renderEditarUsuarios = async(req, res, next) => {
         .catch(err => {
             console.log(err);
 
-            var errorMessage = 'Error en la operación';
+            var errorMessage;
+            if (err.response && err.response.status && err.response.status === 401) {
+                return next(err);
+            } else {
+                errorMessage = 'Error en la operación';
+            }
 
             res.render('usuarios/all-usuarios', {
                 modalCompleteMessage: errorMessage,
@@ -102,7 +114,14 @@ usuariosCtrl.renderActualizarUsuario = async(req, res, next) => {
         .catch(err => {
             console.log(err);
 
-            var errorMessage = 'Error en la operación';
+            var errorMessage;
+            if (err.response && err.response.status && err.response.status === 400) {
+                errorMessage = 'Parámetros inválidos';
+            } else if (err.response && err.response.status && err.response.status === 401) {
+                return next(err);
+            } else {
+                errorMessage = 'Error en la operación';
+            }
 
             let data = {
                 _id: req.body.usuarioId,
