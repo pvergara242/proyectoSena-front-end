@@ -12,32 +12,32 @@
             <label for="tipoDocumento" class="col-sm-2 control-label form-inline" id="tipodocumento">Tipo de Documento: </label>
             <div class="col-sm-10">
                 <select name="tipoDocumento" id="tipoDocumento" class="form-control">
-                    <option value="Cedula de Ciudadanía">Cedula de Ciudadanía</option>
-                    <option value="Tarjeta de Identidad">Tarjeta de Identidad</option>
+                    <option value="Cedula de Ciudadanía" {{#if (verificarTipoDoc usuario.tipoDocumento 'Cedula de Ciudadanía')}}selected{{/if}}>Cedula de Ciudadanía</option>
+                    <option value="Tarjeta de Identidad" {{#if (verificarTipoDoc usuario.tipoDocumento 'Tarjeta de Identidad')}}selected{{/if}}>Tarjeta de Identidad</option>
                 </select>
             </div>
         </div>
         <div id="divDoc" class="form-group row">
             <label for="inputNumDoc" class="col-sm-2 col-form-label">N° Documento: </label>
             <div class="col-sm-10">
-                <input name="numDoc" type="text" class="form-control" id="inputNumDoc">
+                <input name="numDoc" type="text" class="form-control" id="inputNumDoc" value="{{usuario.numDoc}}">
             </div>
         </div>
         <div id="divFechaNac" class="form-group row">
             <label for="inputFechaNac" class="col-sm-2 col-form-label">Fecha Nacimiento: </label>
             <div class="col-sm-10">
-                <input name="fechaNac" type="date" class="form-control" id="inputFechaNac">
+                <input name="fechaNac" type="date" class="form-control" id="inputFechaNac" value="{{usuario.fechaNac}}">
             </div>
         </div>
         <div id="divGen" class="form-group row">
             <label for="inputGen" class="col-sm-2 col-form-label">Genero: </label>
             <div class="col-sm-10">
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="genero" id="inlineRadio1" value="Femenino">
+                    <input class="form-check-input" type="radio" name="genero" id="inlineRadio1" value="Femenino" {{#if (verificarGenero usuario.genero 'Femenino')}}checked{{/if}}>
                     <label class="form-check-label" for="inlineRadio1">Femenino</label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="genero" id="inlineRadio2" value="Masculino">
+                    <input class="form-check-input" type="radio" name="genero" id="inlineRadio2" value="Masculino" {{#if (verificarGenero usuario.genero 'Masculino')}}checked{{/if}}>
                     <label class="form-check-label" for="inlineRadio2">Masculino</label>
                 </div>
             </div>
@@ -45,60 +45,60 @@
         <div id="divNombres" class="form-group row">
             <label for="inputNombres" class="col-sm-2 col-form-label">Nombres: </label>
             <div class="col-sm-10">
-                <input name="nombre" type="text" class="form-control" id="inputNombres">
+                <input name="nombre" type="text" class="form-control" id="inputNombres" value="{{usuario.nombre}}">
             </div>
         </div>
         <div id="divApellidos" class="form-group row">
             <label for="inputApellidos" class="col-sm-2 col-form-label">Apellidos: </label>
             <div class="col-sm-10">
-                <input name="apellidos" type="text" class="form-control" id="inputApellidos">
+                <input name="apellidos" type="text" class="form-control" id="inputApellidos" value="{{usuario.apellidos}}">
             </div>
         </div>
         <div id="divTelefonoFijo" class="form-group row">
             <label for="inputTelefonoFijo" class="col-sm-2 col-form-label">Telefono fijo: </label>
             <div class="col-sm-10">
-                <input name="tel_fij" type="text" class="form-control" id="inputTelefonoFijo">
+                <input name="tel_fij" type="text" class="form-control" id="inputTelefonoFijo" value="{{usuario.tel_fij}}">
             </div>
         </div>
         <div id="divCelular" class="form-group row">
             <label for="inputCelular" class="col-sm-2 col-form-label">Celular: </label>
             <div class="col-sm-10">
-                <input name="celular" type="text" class="form-control" id="inputCelular">
+                <input name="celular" type="text" class="form-control" id="inputCelular" value="{{usuario.celular}}">
             </div>
         </div>
         <div id="divDireccion" class="form-group row">
             <label for="inputDireccion" class="col-sm-2 col-form-label">Dirección: </label>
             <div class="col-sm-10">
-                <input name="direccion" type="text" class="form-control" id="inputDireccion">
+                <input name="direccion" type="text" class="form-control" id="inputDireccion" value="{{usuario.direccion}}">
             </div>
         </div>
         <div id="divEmail" class="form-group row">
             <label for="inputEmail" class="col-sm-2 col-form-label">Correo: </label>
             <div class="col-sm-10">
-                <input name="direc" type="text" class="form-control" id="inputEmail">
+                <input name="direc" type="text" class="form-control" id="inputEmail" value="{{usuario.direc}}">
             </div>
         </div>
         <div id="divContrasena" class="form-group row">
             <label for="inputContrasena" class="col-sm-2 col-form-label">Contraseña: </label>
             <div class="col-sm-10">
-                <input name="contraseña" type="password" class="form-control" id="inputContrasena">
+                <input name="contrasena" type="password" class="form-control" id="inputContrasena" value="{{usuario.contrasena}}">
             </div>
         </div>
         <div id="divConfirmarContrasena" class="form-group row">
             <label for="inputConfirmarContrasena" class="col-sm-2 col-form-label">Confirmar Contraseña: </label>
             <div class="col-sm-10">
-                <input name="contraseña" type="password" class="form-control" id="inputConfirmarContrasena">
+                <input name="confirmarContrasena" type="password" class="form-control" id="inputConfirmarContrasena" value="{{usuario.confirmarContrasena}}">
             </div>
         </div>
         <div id="divRol" class="form-group row">
             <label for="inputRol" class="col-sm-2 col-form-label">Rol: </label>
             <div class="col-sm-10">
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="rol" id="inlineRadioAdministrador" value="1">
+                    <input class="form-check-input" type="radio" name="rol" id="inlineRadioAdministrador" value="1" {{#if (verificarRol usuario.rol '1')}}checked{{/if}}>
                     <label class="form-check-label" for="inlineRadioAdministrador">Administrador</label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="rol" id="inlineRadioAuxiliar" value="2">
+                    <input class="form-check-input" type="radio" name="rol" id="inlineRadioAuxiliar" value="2" {{#if (verificarRol usuario.rol '2')}}checked{{/if}}>
                     <label class="form-check-label" for="inlineRadioAuxiliar">Auxiliar</label>
                 </div>
             </div>

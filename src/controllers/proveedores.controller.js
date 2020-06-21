@@ -13,7 +13,10 @@ proveedoresCtrl.crearProveedor = async (req, res, next) => {
     // consultar los proveedores
     rest.post(req, '/api/v1/proveedores', requestBody)
         .then(result => {
-            res.redirect('/proveedores/all');
+            res.render('Proveedores', {
+                modalCompleteMessage: 'Proveedor creado exitosamente',
+                modalCompleteHref: '/Proveedores'
+            });
         })
         .catch(err => {
             next(err);
