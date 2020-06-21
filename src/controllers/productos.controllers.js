@@ -13,7 +13,10 @@ productosCtrl.crearProductos = async (req, res, next) => {
     // consultar los proveedores
     rest.post(req, '/api/v1/productos', requestBody)
         .then(result => {
-            res.redirect('/productos/all');
+            res.render('productos', {
+                modalCompleteMessage: 'Producto creado exitosamente',
+                modalCompleteHref: '/productos'
+            });
         })
         .catch(err => {
             next(err);
