@@ -1,0 +1,7 @@
+#formulario .validation-error {
+    border-color: #b94a48;
+    color: #b94a48;
+}
+#formulario .help-block.text-error {
+    color: #b94a48;
+}

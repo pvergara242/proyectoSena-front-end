@@ -1,8 +1,21 @@
 const usuariosCtrl = {};
 const rest = require('../configuration/rest');
+const validationRequestHandler = require('../js/validationRequestHandler');
+const {
+    body
+} = require('express-validator');
 
 // crear un nuevo usuari y renderiza una nueva pagina 
 usuariosCtrl.crearUsuario = async(req, res, next) => {
+
+    const errors = validationRequestHandler.validateRequest(req);
+
+    if (errors && errors !== null) {
+        return res.render('Usuarios', {
+            usuario: req.body,
+            errors: errors
+        });
+    }
 
     var requestBody = {
         "tipoDocumento": req.body.tipoDocumento,
@@ -169,6 +182,48 @@ usuariosCtrl.habilitarUsuario = async(req, res, next) => {
             next(err);
         });
 };
+
+usuariosCtrl.validate = (method) => {
+    switch (method) {
+        case 'crearUsuario':
+            {
+                console.log('entro por switch de crearUsuario');
+                return [
+                    body('tipoDocumento', 'Debe ingresar el tipo de documento').exists().notEmpty(),
+                    body('numDoc', 'Debe ingresar el numero de documento').exists().notEmpty(),
+                    body('fechaNac', 'Debe ingresar la fecha de nacimiento').exists().notEmpty(),
+                    body('genero', 'Debe elegir el genero').exists().notEmpty(),
+                    body('nombre', 'Debe ingresar el(los) nombre(s)').exists().notEmpty(),
+                    body('apellidos', 'Debe ingresar el(los) apellido(s)').exists().notEmpty(),
+                    body('tel_fij', 'Debe ingresar el telefono fijo').exists().notEmpty(),
+                    body('tel_fij', 'El telefono fijo debe ser un número').exists().isNumeric(),
+                    body('celular', 'Debe ingresar el celular').exists().notEmpty(),
+                    body('direccion', 'Debe ingresar la dirección').exists().notEmpty(),
+                    body('direc', 'Debe ingresar el correo').exists().notEmpty(),
+                    body('direc', 'Correo inválido').exists().isEmail(),
+                    body('contrasena', 'Debe ingresar la contraseña').exists().notEmpty(),
+                    body('confirmarContrasena', 'Debe ingresar la confirmación de contraseña').exists().notEmpty(),
+                    body('rol', 'Debe elegir el rol').exists().notEmpty(),
+                    body('contrasena').custom((value, {
+                        req
+                    }) => {
+                        if (value !== req.body.confirmarContrasena) {
+                            throw new Error('Confirmación de contraseña no coincide con contraseña');
+                        }
+                        return true;
+                    }),
+                    body('confirmarContrasena').custom((value, {
+                        req
+                    }) => {
+                        if (value !== req.body.contrasena) {
+                            throw new Error('Confirmación de contraseña no coincide con contraseña');
+                        }
+                        return true;
+                    })
+                ]
+            }
+    }
+}
 
 // exportamos el modelo de las notas 
 module.exports = usuariosCtrl;
