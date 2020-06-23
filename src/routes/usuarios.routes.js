@@ -7,6 +7,7 @@ const auth = require("../configuration/authFilter");
 // crud 
 const {
     crearUsuario: crearUsuario,
+    validate,
     renderUsuarios,
     renderEditarUsuarios,
     renderActualizarUsuario,
@@ -15,7 +16,7 @@ const {
 } = require('../controllers/usuarios.controler');
 
 //new note
-router.post('/usuarios/new-usuario', crearUsuario);
+router.post('/usuarios/new-usuario', validate('crearUsuario'), crearUsuario);
 router.get('/usuarios/all', renderUsuarios);
 router.get('/usuarios/edit/:id', renderEditarUsuarios);
 router.post('/usuarios/actualizar-usuario', renderActualizarUsuario);

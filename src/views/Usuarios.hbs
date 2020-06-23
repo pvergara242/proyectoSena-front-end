@@ -20,88 +20,124 @@
         <div id="divDoc" class="form-group row">
             <label for="inputNumDoc" class="col-sm-2 col-form-label">N° Documento: </label>
             <div class="col-sm-10">
-                <input name="numDoc" type="text" class="form-control" id="inputNumDoc" value="{{usuario.numDoc}}">
+                {{input_validation 'numDoc' usuario.numDoc errors class="form-control"}}
+                {{#field_errors 'numDoc' errors}}
+                    <span class="help-block text-error">{{this}}</span>
+                {{/field_errors}}
             </div>
         </div>
         <div id="divFechaNac" class="form-group row">
             <label for="inputFechaNac" class="col-sm-2 col-form-label">Fecha Nacimiento: </label>
             <div class="col-sm-10">
-                <input name="fechaNac" type="date" class="form-control" id="inputFechaNac" value="{{usuario.fechaNac}}">
+                {{input_validation 'fechaNac' usuario.fechaNac errors class="form-control" type="date"}}
+                {{#field_errors 'fechaNac' errors}}
+                    <span class="help-block text-error">{{this}}</span>
+                {{/field_errors}}
             </div>
         </div>
         <div id="divGen" class="form-group row">
-            <label for="inputGen" class="col-sm-2 col-form-label">Genero: </label>
+            <label for="genero" class="col-sm-2 col-form-label">Genero: </label>
             <div class="col-sm-10">
                 <div class="form-check form-check-inline">
                     <input class="form-check-input" type="radio" name="genero" id="inlineRadio1" value="Femenino" {{#if (verificarGenero usuario.genero 'Femenino')}}checked{{/if}}>
-                    <label class="form-check-label" for="inlineRadio1">Femenino</label>
+                    {{label_validation "genero" "Femenino" errors class="form-check-label" for="inlineRadio1"}}
                 </div>
                 <div class="form-check form-check-inline">
                     <input class="form-check-input" type="radio" name="genero" id="inlineRadio2" value="Masculino" {{#if (verificarGenero usuario.genero 'Masculino')}}checked{{/if}}>
-                    <label class="form-check-label" for="inlineRadio2">Masculino</label>
+                    {{label_validation "genero" "Masculino" errors class="form-check-label" for="inlineRadio2"}}
                 </div>
             </div>
+            {{#field_errors 'genero' errors}}
+                <span class="help-block text-error">{{this}}</span>
+            {{/field_errors}}
         </div>
         <div id="divNombres" class="form-group row">
             <label for="inputNombres" class="col-sm-2 col-form-label">Nombres: </label>
             <div class="col-sm-10">
-                <input name="nombre" type="text" class="form-control" id="inputNombres" value="{{usuario.nombre}}">
+                {{input_validation 'nombre' usuario.nombre errors class="form-control" id="inputNombres"}}
+                {{#field_errors 'nombre' errors}}
+                    <span class="help-block text-error">{{this}}</span>
+                {{/field_errors}}
             </div>
         </div>
         <div id="divApellidos" class="form-group row">
             <label for="inputApellidos" class="col-sm-2 col-form-label">Apellidos: </label>
             <div class="col-sm-10">
-                <input name="apellidos" type="text" class="form-control" id="inputApellidos" value="{{usuario.apellidos}}">
+                {{input_validation 'apellidos' usuario.apellidos errors class="form-control" id="inputApellidos"}}
+                {{#field_errors 'apellidos' errors}}
+                    <span class="help-block text-error">{{this}}</span>
+                {{/field_errors}}
             </div>
         </div>
         <div id="divTelefonoFijo" class="form-group row">
             <label for="inputTelefonoFijo" class="col-sm-2 col-form-label">Telefono fijo: </label>
             <div class="col-sm-10">
-                <input name="tel_fij" type="text" class="form-control" id="inputTelefonoFijo" value="{{usuario.tel_fij}}">
+                {{input_validation 'tel_fij' usuario.tel_fij errors class="form-control" id="inputTelefonoFijo"}}
+                {{#field_errors 'tel_fij' errors}}
+                    <span class="help-block text-error">{{this}}</span>
+                {{/field_errors}}
             </div>
         </div>
         <div id="divCelular" class="form-group row">
             <label for="inputCelular" class="col-sm-2 col-form-label">Celular: </label>
             <div class="col-sm-10">
-                <input name="celular" type="text" class="form-control" id="inputCelular" value="{{usuario.celular}}">
+                {{input_validation 'celular' usuario.celular errors class="form-control" id="inputCelular"}}
+                {{#field_errors 'celular' errors}}
+                    <span class="help-block text-error">{{this}}</span>
+                {{/field_errors}}
             </div>
         </div>
         <div id="divDireccion" class="form-group row">
             <label for="inputDireccion" class="col-sm-2 col-form-label">Dirección: </label>
             <div class="col-sm-10">
-                <input name="direccion" type="text" class="form-control" id="inputDireccion" value="{{usuario.direccion}}">
+                {{input_validation 'direccion' usuario.direccion errors class="form-control" id="inputDireccion"}}
+                {{#field_errors 'direccion' errors}}
+                    <span class="help-block text-error">{{this}}</span>
+                {{/field_errors}}
             </div>
         </div>
         <div id="divEmail" class="form-group row">
             <label for="inputEmail" class="col-sm-2 col-form-label">Correo: </label>
             <div class="col-sm-10">
-                <input name="direc" type="text" class="form-control" id="inputEmail" value="{{usuario.direc}}">
+                {{input_validation 'direc' usuario.direc errors class="form-control" id="inputEmail"}}
+                {{#field_errors 'direc' errors}}
+                    <span class="help-block text-error">{{this}}</span>
+                {{/field_errors}}
             </div>
         </div>
         <div id="divContrasena" class="form-group row">
             <label for="inputContrasena" class="col-sm-2 col-form-label">Contraseña: </label>
             <div class="col-sm-10">
-                <input name="contrasena" type="password" class="form-control" id="inputContrasena" value="{{usuario.contrasena}}">
+                {{password_validation 'contrasena' usuario.contrasena errors class="form-control" id="inputContrasena"}}
+                {{#field_errors 'contrasena' errors}}
+                    <span class="help-block text-error">{{this}}</span>
+                {{/field_errors}}
             </div>
         </div>
         <div id="divConfirmarContrasena" class="form-group row">
             <label for="inputConfirmarContrasena" class="col-sm-2 col-form-label">Confirmar Contraseña: </label>
             <div class="col-sm-10">
-                <input name="confirmarContrasena" type="password" class="form-control" id="inputConfirmarContrasena" value="{{usuario.confirmarContrasena}}">
+                {{password_validation 'confirmarContrasena' usuario.confirmarContrasena errors class="form-control" id="inputConfirmarContrasena"}}
+                {{#field_errors 'confirmarContrasena' errors}}
+                    <span class="help-block text-error">{{this}}</span>
+                {{/field_errors}}
             </div>
         </div>
         <div id="divRol" class="form-group row">
-            <label for="inputRol" class="col-sm-2 col-form-label">Rol: </label>
+            <label for="rol" class="col-sm-2 col-form-label">Rol: </label>
             <div class="col-sm-10">
                 <div class="form-check form-check-inline">
                     <input class="form-check-input" type="radio" name="rol" id="inlineRadioAdministrador" value="1" {{#if (verificarRol usuario.rol '1')}}checked{{/if}}>
-                    <label class="form-check-label" for="inlineRadioAdministrador">Administrador</label>
+                    {{label_validation "rol" "Administrador" errors class="form-check-label" for="inlineRadioAdministrador"}}
                 </div>
                 <div class="form-check form-check-inline">
                     <input class="form-check-input" type="radio" name="rol" id="inlineRadioAuxiliar" value="2" {{#if (verificarRol usuario.rol '2')}}checked{{/if}}>
-                    <label class="form-check-label" for="inlineRadioAuxiliar">Auxiliar</label>
+                    {{label_validation "rol" "Auxiliar" errors class="form-check-label" for="inlineRadioAuxiliar"}}
                 </div>
             </div>
+            {{#field_errors 'rol' errors}}
+                <span class="help-block text-error">{{this}}</span>
+            {{/field_errors}}
         </div>
         <div id="divBotones" class="form-group">
             <div>
@@ -113,4 +149,3 @@
     </form>
 </body>
 </html>
-    

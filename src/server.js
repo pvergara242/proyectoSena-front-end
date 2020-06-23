@@ -6,6 +6,8 @@ var bodyParser = require("body-parser");
 require('./js/usuarios');
 require('./js/inventario');
 require('./js/utilities');
+var hbs = exphbs.create({});
+require('handlebars-form-helpers').register(hbs.handlebars);
 
 //inicializaciones
 const app = express();
