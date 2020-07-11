@@ -4,7 +4,9 @@
         <div class="form-group row">
             <label for="input proveedor" class="col-sm-2 col-form-label">Proveedor: </label>
         <div  class="col-sm-10">
+            {{!-- select --}}
             <select name="proveedor" id="proveedor" class="custom-select" required>
+                {{!-- para mostrar la lista de proveedor por cada proveedor va a pintar este HTML --}}
                 {{#each proveedores}}
                     <option value="{{_id}}">{{nombre}}</option>
                 {{/each}}

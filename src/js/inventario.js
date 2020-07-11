@@ -1,7 +1,10 @@
-var expressHbs = require('express-handlebars');
+    var expressHbs = require('express-handlebars');
 
-var hbs = expressHbs.create({});
+// crea el producto
+    var hbs = expressHbs.create({});
 
-hbs.handlebars.registerHelper('verificarProducto', function(inventario, idProducto) {
-    return inventario && inventario.producto && hbs.handlebars.escapeExpression(inventario.producto) === hbs.handlebars.escapeExpression(idProducto);
-})
+// verifica el producto que se ha creado 
+    hbs.handlebars.registerHelper('verificarProducto', function(inventario, idProducto) {
+// retorna el producto en el inventario
+        return inventario && inventario.producto && hbs.handlebars.escapeExpression(inventario.producto) === hbs.handlebars.escapeExpression(idProducto);
+    })

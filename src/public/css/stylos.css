@@ -1,0 +1,126 @@
+/* SECCION / SLIDER */
+.conten-slider{
+    width: 90%;
+    height: 460px;
+    margin: auto;
+}
+.slider-wrap{
+    width: 100%;
+}
+.slider-wrap ul{
+    padding: 0;
+} 
+.slider-wrap li{
+    list-style: none;
+}
+.slider-wrap img{
+    width: 100%;
+    height: 400px;
+}
+
+
+/* SECCION / NOSOTROS */
+.espacio{
+    width: 100%;
+    height: 200px;
+}
+.info-uno-uno{
+    width: 80%;
+    height: 60px;
+    margin-top: 6%;
+    margin-left: 13%;
+    text-align: center;
+}
+.info-uno-uno h2{
+    font-weight: 800;
+    font-size: 32px;
+    color:  lawngreen;
+}
+.green{
+    background-color: rgb(179, 255, 103);
+}
+.white{
+    background-color: rgba(245, 245, 245, 0.938);
+}
+.conten-multimedia {
+    width: 100%;
+    height: 1600px;
+}
+.col-1{
+    width: 100%;
+    height: 400px;
+}
+.imagen-uno{
+    width: 40%;
+    height: 350px;
+    margin-left: 20px;
+    display:inline-block;
+}
+.img-multimedia-uno{
+    width: 100%;
+    height: 350px;
+    margin-left: 30px;
+    position: relative;
+    top: 25px;
+    border-radius: 3px;
+}
+.info-uno{
+    width: 50%;
+    height: 350px;
+    margin-left: 50px;
+    display:inline-block;
+}
+.info-uno h2{
+    font-weight: 800;
+    font-size: 30px;
+}
+.info-uno p{
+    text-align: justify;
+}
+.info-dos{
+    width: 50%;
+    height: 350px;
+    margin-left: 50px;
+    display:inline-block;
+}
+.info-dos h2{
+    font-weight: 800;
+    font-size: 30px;
+}
+.info-dos p{
+    text-align: justify;
+}
+.imagen-dos{
+    width: 40%;
+    height: 350px;
+    margin-left: 20px;
+    display:inline-block;
+}
+.img-multimedia-dos{
+    width: 100%;
+    height: 350px;
+    margin-left: 30px;
+    position: relative;
+    top: 25px;
+    border-radius: 3px;
+}
+
+/* SECCION / FOOTER */
+footer{
+    width: 100%;
+    height: 400px;
+    background-color: black;
+}
+.final{
+    width: 90%;
+    height: 400px;
+    background-color: aqua;
+}
+.logo-uno{
+    width: 20%;
+    height: 50px;
+}
+.logo-uno{
+    width: 20%;
+    height: 50px;
+}

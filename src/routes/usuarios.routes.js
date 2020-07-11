@@ -1,28 +1,37 @@
 
 // requerimos las dependencias anteriormente instaladas 
-var express = require('express');
-var router = express.Router();
-const auth = require("../configuration/authFilter");
+    var express = require('express');
+    var router = express.Router();
+    const auth = require("../configuration/authFilter");
 
-// crud 
-const {
-    crearUsuario: crearUsuario,
-    validate,
-    renderUsuarios,
-    renderEditarUsuarios,
-    renderActualizarUsuario,
-    deshabilitarUsuario,
-    habilitarUsuario
-} = require('../controllers/usuarios.controler');
+ // crud para usuarios 
+    const {
+        crearUsuario: crearUsuario,
+        validate,
+        renderUsuarios,
+        renderEditarUsuarios,
+        renderActualizarUsuario,
+        deshabilitarUsuario,
+        habilitarUsuario
+    } = require('../controllers/usuarios.controler');
 
-//new note
-router.post('/usuarios/new-usuario', validate('crearUsuario'), crearUsuario);
-router.get('/usuarios/all', renderUsuarios);
-router.get('/usuarios/edit/:id', renderEditarUsuarios);
-router.post('/usuarios/actualizar-usuario', renderActualizarUsuario);
-router.post('/usuarios/deshabilitar-usuario', deshabilitarUsuario);
-router.post('/usuarios/habilitar-usuario', habilitarUsuario);
+//usuarios 
+// metodo post envia los datos en este caso de usuario 
+    router.post('/usuarios/new-usuario', validate('crearUsuario'), crearUsuario);
+// renderiza los datos creados anteriormente 
+    router.get('/usuarios/all', renderUsuarios);
+// edita los datos que se crearon o todos los datos creados anteriormente 
+    router.get('/usuarios/edit/:id', renderEditarUsuarios);
+// actualiza los datos 
+    router.post('/usuarios/actualizar-usuario', renderActualizarUsuario);
+// inahibilita un usuarios 
+    router.post('/usuarios/deshabilitar-usuario', deshabilitarUsuario);
+// habilita usuarios 
+    router.post('/usuarios/habilitar-usuario', habilitarUsuario);
 
-router.use(auth.secureEndpoints);
+//le estamos diciendo al enrutador que use esa funcion para cualquier llamada que haga 
+    router.use(auth.secureEndpoints);
+// valida si esta logueado o no esta logueado
 
-module.exports = router
+// exportamos el modelo de la ruta 
+    module.exports = router

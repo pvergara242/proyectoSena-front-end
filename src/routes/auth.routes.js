@@ -1,11 +1,13 @@
-var express = require('express');
-var router = express.Router();
-
-const {
-    ejecutarLogin
-} = require('../controllers/auth.controller');
+// requerimos las dependencias 
+    var express = require('express');
+    var router = express.Router();
 
 
-router.post('/auth/sign-in', ejecutarLogin);
+    const {
+        ejecutarLogin
+    } = require('../controllers/auth.controller');
 
-module.exports = router
+
+    router.post('/auth/sign-in', ejecutarLogin);
+
+    module.exports = router

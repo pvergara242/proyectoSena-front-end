@@ -68,6 +68,7 @@ proveedoresCtrl.renderActualizarProveedor = async (req, res, next) => {
     });
 };
 
+// funcion para deshabilitar proveedores 
 proveedoresCtrl.deshabilitarProveedor = async(req, res, next) => {
     rest.delete(req, '/api/v1/proveedores/' + req.body.id)
     .then(result => {
@@ -79,6 +80,7 @@ proveedoresCtrl.deshabilitarProveedor = async(req, res, next) => {
     }); 
 };
 
+// funcion para habilitar los proveedores 
 proveedoresCtrl.habilitarProveedor = async(req, res, next) => {
     rest.patch(req, '/api/v1/proveedores/' + req.body.id + '/activate')
     .then(result => {

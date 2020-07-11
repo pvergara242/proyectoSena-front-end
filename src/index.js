@@ -1,3 +1,5 @@
+
+// requiero las dependencias previamente instalados anteriormente 
 require('dotenv').config();
 const app = require('./server');
 

@@ -1,3 +1,6 @@
+
+// requerimos las dependencias anteriormente instaladas
+
 const express = require('express');
 const exphbs = require('express-handlebars');
 const path = require('path');
@@ -13,7 +16,7 @@ require('handlebars-form-helpers').register(hbs.handlebars);
 const app = express();
 
 //configuraciones 
-app.set('port', process.env.PORT || 5000);
+app.set('port', process.env.PORT || 3000);
 app.set('views', path.join(__dirname, '/views'));
 app.engine('.hbs', exphbs({
     defaultLayout: 'main',
@@ -46,10 +49,6 @@ app.use(function(req, res, next) {
   	next();
 });
 
-//variables globales 
-
-
-
 //rutas 
 app.use(require('./routes/indexroutes'));
 app.use(require('./routes/usuarios.routes'));
@@ -62,4 +61,5 @@ app.use(require('./routes/auth.routes'));
 app.use(express.static(path.join(__dirname, '/public')));
 
 
+// exportamos la funcion 
 module.exports = app;
