@@ -5,6 +5,7 @@
             <label for="input producto" class="col-sm-2 col-form-label">Producto: </label>
         <div  class="col-sm-10">
             <select name="producto" id="producto" class="custom-select" required>
+                {{!-- for por cada producto que se trajo de la base de datos lo pinta en este HTML  --}}
                 {{#each productos}}
                     <option value="{{_id}}" {{#if (verificarProducto ../inventario _id)}}selected{{/if}}>{{nombre}}</option>
                 {{/each}}

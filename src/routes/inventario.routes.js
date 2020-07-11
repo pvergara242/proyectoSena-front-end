@@ -1,14 +1,19 @@
-// requerimos las dependencias instaladas anteriormente
-var express = require('express');
-var router = express.Router();
-const auth = require("../configuration/authFilter");
-// crud 
-const {
-    crearInventario
-} = require('../controllers/inventario.controller');
+//requerimos las dependencias instaladas anteriormente
+    var express = require('express');
+    var router = express.Router();
+    const auth = require("../configuration/authFilter");
+    
+//crud inventarios 
+    const {
+        crearInventario
+    } = require('../controllers/inventario.controller');
 
-router.post('/inventario/new-inventario', crearInventario);
+//metodo post envia los datos en este caso de inventarios
+    router.post('/inventario/new-inventario', crearInventario);
 
-router.use(auth.secureEndpoints);
+//le estamos diciendo al enrutador que use esa funcion para cualquier llamada que haga 
+    router.use(auth.secureEndpoints);
+    // valida si esta logueado o no esta logueado
 
-module.exports = router
+//exportamos el modelo de la ruta 
+    module.exports = router

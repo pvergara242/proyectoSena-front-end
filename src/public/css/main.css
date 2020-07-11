@@ -64,6 +64,7 @@ form {
   .final{
     background-color: black; 
     position: relative; 
+    width: auto;
 }
    
    .about{
@@ -75,7 +76,7 @@ form {
    .contact{
      color: #f8f8f8;
      position: relative;
-     right: -650px;
+     right: -300px;
      bottom: 20px;
    }
    .imagen{
@@ -93,7 +94,7 @@ form {
      top: 30px;
    }
    .contacto{
-     left: 100px;
+     left: 80px;
    }
    
    * {
@@ -135,7 +136,21 @@ form {
     position: relative; 
     width: 900px;
     height: 200px;
-   
+    overflow: hidden;
+   }
+   .prr{
+     margin-left: 50%;
+   }
+    
+   .contactos{
+     left: 50%;
+     margin-left: 25%;
+     color: #f8f8f8;
+   }
+   .personal{
+    margin-left: 25%;
+    color: #f8f8f8;
+    padding: 10px;
    }
    .about{
        color: #f8f8f8;
@@ -143,11 +158,10 @@ form {
        left: 350px;
        height: 30px;
    }
-   .contact{
+
+   .contacts{
      color: #f8f8f8;
-     position: relative;
-     right: -650px;
-     bottom: 20px;
+     margin-left: 25%;
    }
    .imagen{
      color:grey;
@@ -158,6 +172,12 @@ form {
    }
    .contacto{
      left: 100px;
+   }
+   .contacts{
+     left: 100%;
+   }
+   .parr{
+     margin-left: 26%;
    }
    
    .arriba{
@@ -331,7 +351,6 @@ form {
   left: 480px;
   top: 50px;
   padding: 10px;
-  
 }
 
 fieldset{
@@ -732,7 +751,7 @@ legend{
   color: blanchedalmond;
   position: absolute;
   top: 32%;
-  left: 22%;
+  left: 10%;
 }
 
 #documento{
@@ -771,15 +790,8 @@ legend{
 #recuperar_cl{
   position: absolute;
   top: 310px;
-  left: 120px;
+  left: 50px;
 }
-.logoFooter{
-  height: 200px;
-  width: 300;
-  top: 100px;
-
-}
-
 /* estilos datos personales */
 #formulario{
   width: 410px;
@@ -946,3 +958,11 @@ legend{
   top: 345px;
   left: 0px;
 }
+.final{
+  width:  131%;
+  right: 20%;
+}
+.carousel-inner{
+  overflow: hidden;
+}
+

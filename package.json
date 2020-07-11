@@ -1,41 +1,50 @@
 {
-    "name": "crud-nodejs-mongodb",
-    "version": "1.0.0",
-    "description": "",
-    "main": "index.js",
-    "scripts": {
-        "start": "node src/index.js",
-        "dev": "nodemon src/index.js"
-    },
-    "keywords": [],
-    "author": "",
-    "license": "ISC",
-    "dependencies": {
-        "axios": "^0.19.2",
-        "bcryptjs": "^2.4.3",
-        "body-parser": "^1.19.0",
-        "bootstrap": "^4.5.0",
-        "bootstrap4-toggle": "^3.6.1",
-        "connect-flash": "^0.1.1",
-        "cookie-parser": "^1.4.5",
-        "dotenv": "^8.2.0",
-        "express": "^4.17.1",
-        "express-handlebars": "^4.0.3",
-        "express-session": "^1.17.1",
-        "express-validator": "^6.6.0",
-        "handlebars-form-helpers": "^0.1.4",
-        "jquery": "^3.5.0",
-        "local-auth": "0.0.3",
-        "method-override": "^3.0.0",
-        "morgan": "^1.10.0",
-        "nodemon": "^2.0.4",
-        "passport": "^0.4.1",
-        "passport-local": "^1.0.0",
-        "popper.js": "^1.16.1",
-        "yarn": "^1.22.4"
-    },
-    "devDependencies": {
-        "handlebars": "^4.5.0",
-        "npm-check-updates": "^4.1.2"
-    }
+  "name": "crud-nodejs-mongodb",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "nodemon src/index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.19.2",
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.0",
+    "bootstrap": "^4.5.0",
+    "bootstrap4-toggle": "^3.6.1",
+    "connect-flash": "^0.1.1",
+    "cookie-parser": "^1.4.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-handlebars": "^4.0.3",
+    "express-session": "^1.17.1",
+    "express-validator": "^6.6.0",
+    "handlebars-form-helpers": "^0.1.4",
+    "jquery": "^3.5.0",
+    "local-auth": "0.0.3",
+    "method-override": "^3.0.0",
+    "morgan": "^1.10.0",
+    "nodemon": "^2.0.4",
+    "passport": "^0.4.1",
+    "passport-local": "^1.0.0",
+    "popper.js": "^1.16.1",
+    "yarn": "^1.22.4"
+  },
+  "devDependencies": {
+    "eslint": "^7.3.1",
+    "handlebars": "^4.5.0",
+    "npm-check-updates": "^4.1.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pvergara242/proyectoSena-front-end.git"
+  },
+  "bugs": {
+    "url": "https://github.com/pvergara242/proyectoSena-front-end/issues"
+  },
+  "homepage": "https://github.com/pvergara242/proyectoSena-front-end#readme",
+  "description": ""
 }

@@ -1,64 +1,78 @@
-const indexCrl = {};
-const rest = require('../configuration/rest');
-// renderizar la conexion con las interfaces de las paginas 
-indexCrl.renderIndex = (req, res) => {
-    res.render('index')
-};
+        const indexCrl = {};
+        const rest = require('../configuration/rest');
 
-indexCrl.renderAbout = (req, res) => {
-    res.render('About')
-};
-indexCrl.renderproductos = (req, res, next) => {
-    const params = {
-        includeInactive: false
-    };
+//renderizar la conexion con las interfaces de las paginas 
+        indexCrl.renderIndex = (req, res) => {
+            res.render('index')
+        };
 
-    rest.get(req, '/api/v1/proveedores', params)
-        .then(result => {
-            res.render('productos', { proveedores: result.data });
-        })
-        .catch(err => {
-            next(err);
-        });
-};
+// renderiza la conexion con datos personales 
+        indexCrl.renderAbout = (req, res) => {
+            res.render('About')
+        };
+// renderiza la conexion con productos 
+        indexCrl.renderproductos = (req, res, next) => {
+            const params = {
+                includeInactive: false
+            };
 
-indexCrl.renderUsuarios = (req, res) => {
-    res.render('Usuarios')
-};
+// valida si el producto ha sido creado con proveedores 
+            rest.get(req, '/api/v1/proveedores', params)
+                .then(result => {
+                    res.render('productos', { proveedores: result.data });
+                })
+// de lo contrario muestra un error 
+                .catch(err => {
+                    next(err);
+                });
+        };
 
-indexCrl.renderProveedores = (req, res) => {
-    res.render('Proveedores')
-};
+// renderiza la conexion con usuarios 
+        indexCrl.renderUsuarios = (req, res) => {
+            res.render('Usuarios')
+        };
 
-indexCrl.renderInventario = (req, res, next) => {
-    const params = {
-        includeInactive: false
-    };
+// renderiza la conexion con proveedores
+        indexCrl.renderProveedores = (req, res) => {
+            res.render('Proveedores')
+        };
 
-    rest.get(req, '/api/v1/productos', params)
-        .then(result => {
-            res.render('inventario', { productos: result.data });
-        })
-        .catch(err => {
-            next(err);
-        });
-};
+// renderiza la conexion con inventarios
+        indexCrl.renderInventario = (req, res, next) => {
+            const params = {
+                includeInactive: false
+            };
 
-indexCrl.renderFactura = (req, res) => {
-    res.render('Factura')
-};
+// valida si el produto se creo exitosamente en inventario con la cantidad correcta
+            rest.get(req, '/api/v1/productos', params)
+                .then(result => {
+                    res.render('inventario', { productos: result.data });
+                })
+// de lo contrario saldra error 
+                .catch(err => {
+                    next(err);
+                });
+        };
 
-indexCrl.renderLogin = (req, res) => {
-    res.render('Login')
-};
+// renderiza la conexion con la factura
+        indexCrl.renderFactura = (req, res) => {
+            res.render('Factura')
+        };
 
-indexCrl.renderLogout = (req, res, next) => {
-	res.locals.usuario = false;
-	res.locals.usuarioInfo = {};
-    res.clearCookie('token', { path: '/' });
-    res.clearCookie('usuario', { path: '/' });
-    res.status(200);
-    res.redirect('/');
-};
+// renderiza la conexion con el login 
+        indexCrl.renderLogin = (req, res) => {
+            res.render('Login')
+        };
 
-module.exports = indexCrl;
+ // cierra sesion 
+        indexCrl.renderLogout = (req, res, next) => {
+            res.locals.usuario = false;
+            res.locals.usuarioInfo = {};
+            res.clearCookie('token', { path: '/' });
+            res.clearCookie('usuario', { path: '/' });
+            res.status(200);
+            res.redirect('/');
+        };
+
+// exportamos el modelo
+        module.exports = indexCrl;

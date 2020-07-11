@@ -1,15 +1,24 @@
-var expressHbs = require('express-handlebars');
+// requerimos las dependencias
 
-var hbs = expressHbs.create({});
+    var expressHbs = require('express-handlebars');
 
-hbs.handlebars.registerHelper('verificarRol', function(rol, tipo) {
-    return rol && tipo && hbs.handlebars.escapeExpression(rol).toLowerCase() == hbs.handlebars.escapeExpression(tipo).toLowerCase();
-})
+// crea el usuario 
+    var hbs = expressHbs.create({});
 
-hbs.handlebars.registerHelper('verificarGenero', function(genero, tipo) {
-    return genero && tipo && hbs.handlebars.escapeExpression(genero).toLowerCase() == hbs.handlebars.escapeExpression(tipo).toLowerCase();
-})
+// verifica el rol si es administrador o auxiliar
+    hbs.handlebars.registerHelper('verificarRol', function(rol, tipo) {
+        // retorna el rol y el valor que se le indico 
+        return rol && tipo && hbs.handlebars.escapeExpression(rol).toLowerCase() == hbs.handlebars.escapeExpression(tipo).toLowerCase();
+    })
 
-hbs.handlebars.registerHelper('verificarTipoDoc', function(tipoDoc, tipo) {
-    return tipoDoc && tipo && hbs.handlebars.escapeExpression(tipoDoc).toLowerCase() == hbs.handlebars.escapeExpression(tipo).toLowerCase();
-})
+// verifica el genero 
+    hbs.handlebars.registerHelper('verificarGenero', function(genero, tipo) {
+        // retorna el genero y el valor que se indico 
+        return genero && tipo && hbs.handlebars.escapeExpression(genero).toLowerCase() == hbs.handlebars.escapeExpression(tipo).toLowerCase();
+    })
+
+// verifica el  tipo de documento 
+    hbs.handlebars.registerHelper('verificarTipoDoc', function(tipoDoc, tipo) {
+        // retorna un valor en este caso tipoDoc 
+        return tipoDoc && tipo && hbs.handlebars.escapeExpression(tipoDoc).toLowerCase() == hbs.handlebars.escapeExpression(tipo).toLowerCase();
+    })
