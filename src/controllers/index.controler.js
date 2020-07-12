@@ -56,7 +56,9 @@
 
 // renderiza la conexion con la factura
         indexCrl.renderFactura = (req, res) => {
-            res.render('Factura')
+            var defaultProducto = {};
+            //TODO cargar remision de BD
+            res.render('Factura', { numeroRemision: '123456789', productos: [ defaultProducto ] })
         };
 
 // renderiza la conexion con el login 

@@ -55,6 +55,7 @@ app.use(require('./routes/usuarios.routes'));
 app.use(require('./routes/proveedores.routes'));
 app.use(require('./routes/productos.routes'));
 app.use(require('./routes/inventario.routes'));
+app.use(require('./routes/factura.routes'));
 app.use(require('./routes/auth.routes'));
 
 //static files 
