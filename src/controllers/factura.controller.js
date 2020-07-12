@@ -87,8 +87,7 @@ facturaCtrl.renderFactura = async(req, res, next) => {
             numeroRemision: req.body.numeroRemision, 
             productos: productos,
             modalCompleteMessage: errorMessage,
-            modalCompleteTitle: 'Error',
-            usuario: req.body
+            modalCompleteTitle: 'Error'
         });
     });
 };
