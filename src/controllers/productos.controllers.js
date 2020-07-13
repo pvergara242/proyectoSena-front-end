@@ -50,6 +50,7 @@ productosCtrl.renderEditarProductos= async(req, res, next) => {
 // actualiza los datos de un proveedor 
 productosCtrl.renderActualizarProductos = async (req, res, next) => {
     var requestBody = {
+        "proveedor": req.body.proveedorId,
         "nombre": req.body.nombre,
         "descripcion": req.body.descripcion,
         "tipo": req.body.tipo,

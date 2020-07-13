@@ -2,10 +2,11 @@
 <form action="/productos/actualizar-productos" method="post" id="formulario">
     <legend>DATOS DE PRODUCTOS</legend>
     <input type="hidden" value="{{productos._id}}" name="productosId" />
+    <input type="hidden" value="{{productos.proveedor._id}}" name="proveedorId" />
     <div id="divProveedor" class="form-group row">
         <label for="inputProveedor" class="col-sm-2 col-form-label">Proveedor: </label>
         <div class="col-sm-10">
-            <input name="nombre" readonly="true" type="text" class="form-control" id="inputProveedor" value="{{productos.proveedor.nombre}}">
+            <input name="inputProveedor" readonly="true" type="text" class="form-control" id="inputProveedor" value="{{productos.proveedor.nombre}}">
         </div>
     </div>
     <div id="divNombre" class="form-group row">
