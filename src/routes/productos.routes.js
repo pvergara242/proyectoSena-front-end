@@ -9,6 +9,7 @@
         crearProductos,
         renderProductos,
         renderEditarProductos,
+        renderConsultarProductos,
         renderActualizarProductos,
         deshabilitarProducto,
         habilitarProducto
@@ -20,6 +21,8 @@
     router.get('/productos/all', renderProductos);
 //edita los datos que se crearon o todos los datos creados anteriormente 
     router.get('/productos/edit/:id', renderEditarProductos);
+//consultar los datos 
+    router.get('/productos/details/:id', renderConsultarProductos);
 //actualiza los datos 
     router.post('/productos/actualizar-productos', renderActualizarProductos);
 // inahibilita un producto

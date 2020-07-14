@@ -1,17 +1,17 @@
   <div class="row">
-      <legend>LISTA DE PROVEEDORES</legend>
-      <div class="table-responsive">
+          <legend><h1>LISTADO DE PROVEEDORES</h1></legend>
+      <div class="table table-responsive">
           <table class="table table-bordered">
-              <thead>
+              <thead class="thead-dark">
                   <tr>
 {{!-- por cada proveedor registrado --}}
                       <th scope="col">#</th>
-                      <th scope="col">Nombre</th>
+                      <th scope="col">NOMBRE</th>
                       <th scope="col">NIT</th>
-                      <th scope="col">Email</th>
-                      <th scope="col">Telefono</th>
-                      <th scope="col"></th>
-                      <th scope="col"></th>
+                      <th scope="col">EMAIL</th>
+                      <th scope="col">TELEFONO</th>
+                      <th scope="col">ACCIONES</th>
+                      <th scope="col">ESTADO</th>
                   </tr>
               </thead>
               <tbody>
@@ -25,8 +25,11 @@
                       <td>{{email}}</td>
                       <td>{{telefono}}</td>
                       <td>
-                          <button onclick="location.href='/proveedores/edit/{{_id}}';">
+                          <button onclick="location.href='/proveedores/edit/{{_id}}';" class="btn btn-warning">
                               Editar
+                          </button>
+                          <button onclick="location.href='/proveedores/details/{{_id}}';" class="btn btn-info">
+                              Consultar
                           </button>
                       </td>
                       <td>

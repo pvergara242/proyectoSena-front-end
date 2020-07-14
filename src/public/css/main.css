@@ -7,8 +7,8 @@ body {
     background:white;
 }
 
-.usuarios {
-}
+/*.usuarios {
+}*/
 
 .proveedores {
     padding: 20px;
@@ -38,6 +38,7 @@ form {
 /* Intro section */
 #intro {
     min-height: 100vh;
+
 }
 .intro-title {
     font-size: 60px;
@@ -60,6 +61,7 @@ form {
   }
   .septimaSection{
     margin-top: 100px;
+    width: 120%;
   }
   .final{
     background-color: black; 
@@ -969,4 +971,8 @@ legend{
 .form-comun {
     width: 99%;
     padding: 10px;
+}
+
+.texto-alineacion{
+  text-align: center;
 }

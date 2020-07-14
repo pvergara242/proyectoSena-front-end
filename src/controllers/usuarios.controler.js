@@ -111,6 +111,36 @@
             });
     };
 
+// funcion para mostrar datos del usuario
+usuariosCtrl.renderConsultarUsuario = async(req, res, next) => {
+    rest.get(req, '/api/v1/usuarios/' + req.params.id)
+        .then(result => {
+            let data = result.data;
+            let date = new Date(Date.parse(data.datosPersonales.fechaNacimiento));
+            let fechaNacimiento = date.toISOString().slice(0, 10);
+            data.datosPersonales.fechaNacimiento = fechaNacimiento;
+            res.render('usuarios/details-usuarios', {
+                usuario: data
+            });
+        })
+        .catch(err => {
+            console.log(err);
+
+            var errorMessage;
+            if (err.response && err.response.status && err.response.status === 401) {
+                return next(err);
+            } else {
+                errorMessage = 'Error en la operación';
+            }
+
+            res.render('usuarios/all-usuarios', {
+                modalCompleteMessage: errorMessage,
+                modalCompleteTitle: 'Error',
+                modalCompleteHref: '/Usuarios/all'
+            });
+        });
+};
+
 // actualiza los datos de usuarios 
     usuariosCtrl.renderActualizarUsuario = async(req, res, next) => {
         var requestBody = {
