@@ -107,10 +107,9 @@
     <div id="divBotones" class="form-group">
         <div>
             {{!-- renderiza la lista de usuarios que ya estan registrados --}}           
-             <button onclick="location.href='/usuarios/edit/{{_id}}';" value="Editar" class="btn btn-secondary">Editar</button>
+            <input  type="button" onclick="window.location.href='/usuarios/edit/{{usuario._id}}';" value="Editar" class="btn btn-secondary"/>
             <input type="button" value="Imprimir" onclick="window.print()" class="btn btn-secondary">
-            <input type="button" class="btn btn-secondary" value="Cancelar"
-                onClick="window.location.href='/usuarios/all'">
+            <input type="button" class="btn btn-secondary" value="Cancelar"onClick="window.location.href='/usuarios/all'">
         </div>
     </div>
 </form>

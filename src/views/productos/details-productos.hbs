@@ -1,13 +1,12 @@
 {{!-- formulario para editar un producto--}}
-<form action="/productos/actualizar-productos" method="post" id="formulario">
+<form id="formulario">
     <legend>DATOS DE PRODUCTOS</legend>
     <input type="hidden" value="{{productos._id}}" name="productosId" />
     <input type="hidden" value="{{productos.proveedor._id}}" name="proveedorId" />
     <div id="divProveedor" class="form-group row">
         <label for="inputProveedor" class="col-sm-2 col-form-label">Proveedor: {{productos.proveedor.nombre}}</label>
         <div class="col-sm-10">
-            <label name="inputProveedor" readonly="true" type="text" class="form-control" id="inputProveedor" value="{{productos.proveedor.nombre}}">
-            <label for="" id="inputProveedor" value="">{{productos.proveedor.nombre}}</label>
+            <input name="inputProveedor" type="text" class="form-control" id="inputProveedor" value="{{productos.proveedor.nombre}}" disabled>
         </div>
     </div>
     <div id="divNombre" class="form-group row">
@@ -36,7 +35,7 @@
     </div>
     <div id="divBotones" class="form-group">
         <div>
-            <button onclick="location.href='/productos/edit/{{_id}}';" class="btn btn-secondary">Editar</button>
+            <input  type="button" onclick="window.location.href='/productos/edit/{{productos._id}}';" value="Editar" class="btn btn-secondary"/>
             <input type="button" value="Imprimir" onclick="window.print()" class="btn btn-secondary">
             <input type="button" class="btn btn-secondary" value="Cancelar" onClick="window.location.href='/productos/all'">           
         </div>
