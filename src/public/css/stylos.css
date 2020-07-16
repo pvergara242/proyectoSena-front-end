@@ -124,3 +124,8 @@ footer{
     width: 20%;
     height: 50px;
 }
+.boton2{
+   display: flex;
+   position: relative;
+   margin-top: 50px;
+}

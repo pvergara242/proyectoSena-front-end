@@ -89,5 +89,16 @@ productosCtrl.habilitarProducto = async(req, res, next) => {
     }); 
 };
 
+// funcionalidad consultar producto
+productosCtrl.renderConsultarProductos= async(req, res, next) => {
+    rest.get(req, '/api/v1/productos/' + req.params.id)
+    .then(result => {
+        res.render('productos/details-productos', { productos: result.data });
+    })
+    .catch(err => {
+        next(err);
+    }); 
+};
+
 // exportamos el modelo de las notas 
 module.exports = productosCtrl;

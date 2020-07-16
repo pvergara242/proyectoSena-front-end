@@ -7,9 +7,6 @@ body {
     background:white;
 }
 
-.usuarios {
-}
-
 .proveedores {
     padding: 20px;
 }
@@ -60,6 +57,7 @@ form {
   }
   .septimaSection{
     margin-top: 100px;
+    width: 120%;
   }
   .final{
     background-color: black; 
@@ -776,6 +774,16 @@ legend{
 }
 
 
+.boton2{
+  width: 300px;
+  height: 35px;
+  position: absolute;
+  left: 40px;
+  top: 299px;
+  border: 1px solid #39c;
+  font-size: 16px;
+  font-family: 'Times New Roman', Times, serif;
+}
 .boton{
   width: 300px;
   height: 35px;
@@ -969,4 +977,8 @@ legend{
 .form-comun {
     width: 99%;
     padding: 10px;
+}
+
+.texto-alineacion{
+  text-align: center;
 }

@@ -8,6 +8,7 @@
         crearProveedor,
         renderProveedores,
         renderEditarProveedor,
+        renderConsultarProveedor,
         renderActualizarProveedor,
         deshabilitarProveedor,
         habilitarProveedor
@@ -19,6 +20,8 @@
     router.get('/proveedores/all', renderProveedores);
 // edita los datos que se crearon o todos los datos creados anteriormente 
     router.get('/proveedores/edit/:id', renderEditarProveedor);
+// muestra los datos que se crearon o todos los datos creados anteriormente 
+    router.get('/proveedores/details/:id', renderConsultarProveedor);
 // actualiza los datos 
     router.post('/proveedores/actualizar-proveedor', renderActualizarProveedor);
 // inahibilita proveedores 

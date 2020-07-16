@@ -1,15 +1,16 @@
   <div class="row">
-      <div class="table-responsive">
+    <legend><h1>LISTADO DE USUARIOS</h1></legend>
+      <div class="table table-responsive">
           <table class="table table-bordered">
               <thead>
-                  <tr>
-                      <th scope="col">#</th>
-                      <th scope="col">Tipo Documento</th>
-                      <th scope="col"># Documento</th>
-                      <th scope="col">Nombres</th>
-                      <th scope="col">Apellidos</th>
-                      <th scope="col"></th>
-                      <th scope="col"></th>
+                  <tr class="thead-dark">
+                      <th scope="col" class="texto-alineacion">#</th>
+                      <th scope="col" class="texto-alineacion">TIPO DE DOCUMENTO</th>
+                      <th scope="col" class="texto-alineacion">NÚMERO DE DOCUMENTO</th>
+                      <th scope="col" class="texto-alineacion">NOMBRES</th>
+                      <th scope="col" class="texto-alineacion">APELLIDOS</th>
+                      <th scope="col" class="texto-alineacion">ACCIONES</th>
+                      <th scope="col" class="texto-alineacion">ESTADO</th>
                   </tr>
               </thead>
               <tbody>
@@ -23,8 +24,11 @@
                       <td>{{datosPersonales.nombres}}</td>
                       <td>{{datosPersonales.apellidos}}</td>
                       <td>
-                          <button onclick="location.href='/usuarios/edit/{{_id}}';">
+                          <button onclick="location.href='/usuarios/edit/{{_id}}';" class="btn btn-warning">
                               Editar
+                          </button>
+                          <button onclick="location.href='/usuarios/details/{{_id}}';" class="btn btn-info">
+                              Consultar
                           </button>
                       </td>
                       <td>

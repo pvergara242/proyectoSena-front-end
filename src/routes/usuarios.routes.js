@@ -10,6 +10,7 @@
         validate,
         renderUsuarios,
         renderEditarUsuarios,
+        renderConsultarUsuario,
         renderActualizarUsuario,
         deshabilitarUsuario,
         habilitarUsuario
@@ -22,6 +23,8 @@
     router.get('/usuarios/all', renderUsuarios);
 // edita los datos que se crearon o todos los datos creados anteriormente 
     router.get('/usuarios/edit/:id', renderEditarUsuarios);
+// muestra los datos que se crearon o todos los datos creados anteriormente 
+    router.get('/usuarios/details/:id', renderConsultarUsuario);
 // actualiza los datos 
     router.post('/usuarios/actualizar-usuario', renderActualizarUsuario);
 // inahibilita un usuarios 

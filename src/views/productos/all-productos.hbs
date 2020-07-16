@@ -1,16 +1,17 @@
 <div class="row">
-    <legend>LISTA DE PRODUCTOS</legend>
-    <div class="table-responsive">
-        <table class="table table-bordered">
-            <thead>
+        <legend><h1>LISTADO DE PRODUCTOS</h1></legend>
+
+    <div class="table table-responsive">
+        <table class="table table-condensed table-bordered table-hover">
+            <thead class="thead-dark">
                 <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Nombre</th>
-                    <th scope="col">descripcion</th>
-                    <th scope="col">tipo</th>
-                    <th scope="col">precio</th>
-                    <th scope="col"></th>
-                    <th scope="col"></th>
+                    <th scope="col" class="texto-alineacion">#</th>
+                    <th scope="col" class="texto-alineacion">NOMBRE</th>
+                    <th scope="col" class="texto-alineacion">DESCRIPCIÓN</th>
+                    <th scope="col" class="texto-alineacion">TIPO</th>
+                    <th scope="col" class="texto-alineacion">PRECIO</th>
+                    <th scope="col" class="texto-alineacion">ACCIONES</th>
+                    <th scope="col" class="texto-alineacion">ESTADO</th>
                 </tr>
             </thead>
             <tbody>
@@ -22,9 +23,14 @@
                   <td>{{tipo}}</td>
                    <td>{{precio}}</td>
                   <td>
-                      <button onclick="location.href='/productos/edit/{{_id}}';">
+                    <center>
+                      <button onclick="location.href='/productos/edit/{{_id}}';" class="btn btn-warning">
                           Editar
                       </button>
+                      <button onclick="location.href='/productos/details/{{_id}}';" class="btn btn-info">
+                          Consultar
+                      </button>
+                      </center>
                   </td>
                   <td>
                         <input id="toggle-estado-{{inc @index}}" type="checkbox" {{#if (verificarEstado estado 'Activo')}}checked{{/if}} data-toggle="toggle" data-on="Activo" data-off="Inactivo" data-onstyle="success" data-offstyle="danger" onchange="functionTest(this, '{{_id}}');">
@@ -34,6 +40,7 @@
             </tbody>
         </table>
     </div>
+
     <script type="text/javascript">
           function functionTest(e, identifier){
             const XHR = new XMLHttpRequest();
