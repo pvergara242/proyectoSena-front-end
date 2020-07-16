@@ -48,6 +48,17 @@ proveedoresCtrl.renderEditarProveedor = async(req, res, next) => {
     }); 
 };
 
+// funcion para mostrar datos del proveedor
+proveedoresCtrl.renderConsultarProveedor = async(req, res, next) => {
+    rest.get(req, '/api/v1/proveedores/' + req.params.id)
+    .then(result => {
+        res.render('proveedores/details-proveedores', { proveedor: result.data });
+    })
+    .catch(err => {
+        next(err);
+    }); 
+};
+
 // actualiza los datos de un proveedor 
 proveedoresCtrl.renderActualizarProveedor = async (req, res, next) => {
     var requestBody = {

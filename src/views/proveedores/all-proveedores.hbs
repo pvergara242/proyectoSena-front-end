@@ -1,86 +1,95 @@
-  <div class="row">
-      <legend>LISTA DE PROVEEDORES</legend>
-      <div class="table-responsive">
-          <table class="table table-bordered">
-              <thead>
-                  <tr>
-{{!-- por cada proveedor registrado --}}
-                      <th scope="col">#</th>
-                      <th scope="col">Nombre</th>
-                      <th scope="col">NIT</th>
-                      <th scope="col">Email</th>
-                      <th scope="col">Telefono</th>
-                      <th scope="col"></th>
-                      <th scope="col"></th>
-                  </tr>
-              </thead>
-              <tbody>
-                
-  {{!-- pinta los datos en el HTML   --}}
-                  {{#each proveedores}}
-                  <tr>
-                      <th scope="row">{{inc @index}}</th>
-                      <td>{{nombre}}</td>
-                      <td>{{nit}}</td>
-                      <td>{{email}}</td>
-                      <td>{{telefono}}</td>
-                      <td>
-                          <button onclick="location.href='/proveedores/edit/{{_id}}';">
-                              Editar
-                          </button>
-                      </td>
-                      <td>
-                          <input id="toggle-estado-{{inc @index}}" type="checkbox" {{#if (verificarEstado estado 'Activo')}}checked{{/if}} data-toggle="toggle" data-on="Activo" data-off="Inactivo" data-onstyle="success" data-offstyle="danger" onchange="estadoToggleOnChange(this, '{{_id}}');">
-                      </td>
-                  </tr>
-                  {{/each}}
-              </tbody>
-          </table>
-      </div>
-      <script type="text/javascript">
-          function estadoToggleOnChange(e, identifier){
-            const XHR = new XMLHttpRequest();
+<div class="row">
+  <legend>
+    <h1>LISTADO DE PROVEEDORES</h1>
+  </legend>
+  <div class="table table-responsive">
+    <table class="table table-bordered">
+      <thead class="thead-dark">
+        <tr>
+          {{!-- por cada proveedor registrado --}}
+          <th scope="col" class="texto-alineacion">#</th>
+          <th scope="col" class="texto-alineacion">NOMBRE</th>
+          <th scope="col" class="texto-alineacion">NIT</th>
+          <th scope="col" class="texto-alineacion">EMAIL</th>
+          <th scope="col" class="texto-alineacion">TELEFONO</th>
+          <th scope="col" class="texto-alineacion">ACCIONES</th>
+          <th scope="col" class="texto-alineacion">ESTADO</th>
+        </tr>
+      </thead>
+      <tbody>
 
-// ventanas modales si la operacion fue exitosamente 
-            XHR.addEventListener( 'load', function(event) {
-              if(XHR.readyState === XMLHttpRequest.DONE) {
-                  var status = XHR.status;
-                  var modal = $('#applicationModal');
-                  if (status === 0 || (status >= 200 && status < 400)) {
-                    modal.find('.modal-body h4').text('Operación realizada exitosamente');
-                    modal.modal('show');
-// de lo contrario saldra error al ingresar los datos 
-                  } else {
-                    console.log('Status error code: ', status);
-                    modal.find('.modal-title').text('Error');
-                    modal.find('.modal-body h4').text('Error al ejecutar la operacion.');
-                    modal.modal('show');
-                    if (!e.checked) {
-                      var toggle = $('#' + e.id).data('bs.toggle');
-                      toggle.on(true);
-                    } else {
-                      var toggle = $('#' + e.id).data('bs.toggle');
-                      toggle.off(true);
-                    }                    
-                  }
-                }
-            } );
-
-// Configure nuestra solicitud
-            if (e.checked) {
-// habilita un proveedor
-              XHR.open( 'POST', '/proveedores/habilitar' );
-            } else {
-//activa un proveedor 
-              XHR.open( 'POST', '/proveedores/deshabilitar' );
-            }
-
-            var data = {};
-            data.id = identifier;
-            let json = JSON.stringify(data);
-
-            XHR.setRequestHeader('Content-type','application/json; charset=utf-8');
-            XHR.send( json );
-          }    
-      </script>
+        {{!-- pinta los datos en el HTML   --}}
+        {{#each proveedores}}
+        <tr>
+          <th scope="row">{{inc @index}}</th>
+          <td>{{nombre}}</td>
+          <td>{{nit}}</td>
+          <td>{{email}}</td>
+          <td>{{telefono}}</td>
+          <td>
+            <button onclick="location.href='/proveedores/edit/{{_id}}';" class="btn btn-warning">
+              Editar
+            </button>
+            <button onclick="location.href='/proveedores/details/{{_id}}';" class="btn btn-info">
+              Consultar
+            </button>
+          </td>
+          <td>
+            <input id="toggle-estado-{{inc @index}}" type="checkbox"
+              {{#if (verificarEstado estado 'Activo')}}checked{{/if}} data-toggle="toggle" data-on="Activo"
+              data-off="Inactivo" data-onstyle="success" data-offstyle="danger"
+              onchange="estadoToggleOnChange(this, '{{_id}}');">
+          </td>
+        </tr>
+        {{/each}}    
+      </tbody>
+    </table>
+    <input type="button" value="Imprimir" onclick="window.print()" class="btn btn-secondary">
   </div>
+  <script type="text/javascript">
+    function estadoToggleOnChange(e, identifier) {
+      const XHR = new XMLHttpRequest();
+
+      // ventanas modales si la operacion fue exitosamente 
+      XHR.addEventListener('load', function (event) {
+        if (XHR.readyState === XMLHttpRequest.DONE) {
+          var status = XHR.status;
+          var modal = $('#applicationModal');
+          if (status === 0 || (status >= 200 && status < 400)) {
+            modal.find('.modal-body h4').text('Operación realizada exitosamente');
+            modal.modal('show');
+            // de lo contrario saldra error al ingresar los datos 
+          } else {
+            console.log('Status error code: ', status);
+            modal.find('.modal-title').text('Error');
+            modal.find('.modal-body h4').text('Error al ejecutar la operacion.');
+            modal.modal('show');
+            if (!e.checked) {
+              var toggle = $('#' + e.id).data('bs.toggle');
+              toggle.on(true);
+            } else {
+              var toggle = $('#' + e.id).data('bs.toggle');
+              toggle.off(true);
+            }
+          }
+        }
+      });
+
+      // Configure nuestra solicitud
+      if (e.checked) {
+        // habilita un proveedor
+        XHR.open('POST', '/proveedores/habilitar');
+      } else {
+        //activa un proveedor 
+        XHR.open('POST', '/proveedores/deshabilitar');
+      }
+
+      var data = {};
+      data.id = identifier;
+      let json = JSON.stringify(data);
+
+      XHR.setRequestHeader('Content-type', 'application/json; charset=utf-8');
+      XHR.send(json);
+    }    
+  </script>
+</div>

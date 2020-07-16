@@ -1,0 +1,44 @@
+{{!-- formulario para editar un producto--}}
+<form action="/productos/actualizar-productos" method="post" id="formulario">
+    <legend>DATOS DE PRODUCTOS</legend>
+    <input type="hidden" value="{{productos._id}}" name="productosId" />
+    <input type="hidden" value="{{productos.proveedor._id}}" name="proveedorId" />
+    <div id="divProveedor" class="form-group row">
+        <label for="inputProveedor" class="col-sm-2 col-form-label">Proveedor: {{productos.proveedor.nombre}}</label>
+        <div class="col-sm-10">
+            <label name="inputProveedor" readonly="true" type="text" class="form-control" id="inputProveedor" value="{{productos.proveedor.nombre}}">
+            <label for="" id="inputProveedor" value="">{{productos.proveedor.nombre}}</label>
+        </div>
+    </div>
+    <div id="divNombre" class="form-group row">
+        <label for="inputNombre" class="col-sm-2 col-form-label">Nombre: </label>
+        <div class="col-sm-10">
+            <input name="nombre" type="text" class="form-control" id="inputNombre" value="{{productos.nombre}}" disabled>
+        </div>
+    </div>
+    <div id="divDescripcion" class="form-group row">
+        <label for="inputDescripcion" class="col-sm-2 col-form-label">Descripcion: </label>
+        <div class="col-sm-10">
+            <input name="descripcion" type="text" class="form-control" id="inputDescripcion" value="{{productos.descripcion}}" disabled>
+        </div>
+    </div>
+    <div id="divTipo" class="form-group row">
+        <label for="inputTipo" class="col-sm-2 col-form-label">Tipo: </label>
+        <div class="col-sm-10">
+            <input name="tipo" type="text" class="form-control" id="inputTipo" value="{{productos.tipo}}" disabled>
+        </div>
+    </div>
+     <div id="divPrecio" class="form-group row">
+        <label for="inputPrecio" class="col-sm-2 col-form-label">Precio: </label>
+        <div class="col-sm-10">
+            <input name="precio" type="text" class="form-control" id="inputPrecio" value="{{productos.precio}}" disabled>
+        </div>
+    </div>
+    <div id="divBotones" class="form-group">
+        <div>
+            <button onclick="location.href='/productos/edit/{{_id}}';" class="btn btn-secondary">Editar</button>
+            <input type="button" value="Imprimir" onclick="window.print()" class="btn btn-secondary">
+            <input type="button" class="btn btn-secondary" value="Cancelar" onClick="window.location.href='/productos/all'">           
+        </div>
+    </div>
+</form>
