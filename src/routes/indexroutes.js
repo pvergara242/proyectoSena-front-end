@@ -13,7 +13,7 @@
         renderInventario,
         renderFactura,
         renderLogin,
-        renderLogout
+        renderLogout,
     } = require('../controllers/index.controler')
 
     router.use('/Proveedores', auth.filter);
@@ -29,6 +29,7 @@
     router.get('/Factura', renderFactura);
     router.get('/Login', renderLogin);
     router.get('/Logout', renderLogout);
+    
 
 //usamos la ruta 
     router.use(auth.secureEndpoints);

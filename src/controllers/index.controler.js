@@ -76,5 +76,7 @@
             res.redirect('/');
         };
 
+
+
 // exportamos el modelo
         module.exports = indexCrl;

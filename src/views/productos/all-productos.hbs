@@ -1,87 +1,93 @@
 <div class="row">
-        <legend><h1>LISTADO DE PRODUCTOS</h1></legend>
+  <legend>
+    <h1>LISTADO DE PRODUCTOS</h1>
+  </legend>
 
-    <div class="table table-responsive">
-        <table class="table table-condensed table-bordered table-hover">
-            <thead class="thead-dark">
-                <tr>
-                    <th scope="col" class="texto-alineacion">#</th>
-                    <th scope="col" class="texto-alineacion">NOMBRE</th>
-                    <th scope="col" class="texto-alineacion">DESCRIPCIÓN</th>
-                    <th scope="col" class="texto-alineacion">TIPO</th>
-                    <th scope="col" class="texto-alineacion">PRECIO</th>
-                    <th scope="col" class="texto-alineacion">ACCIONES</th>
-                    <th scope="col" class="texto-alineacion">ESTADO</th>
-                </tr>
-            </thead>
-            <tbody>
-                {{#each productos}}
-                <tr>
-                  <th scope="row">{{inc @index}}</th>
-                  <td>{{nombre}}</td>
-                  <td>{{descripcion}}</td>
-                  <td>{{tipo}}</td>
-                   <td>{{precio}}</td>
-                  <td>
-                    <center>
-                      <button onclick="location.href='/productos/edit/{{_id}}';" class="btn btn-warning">
-                          Editar
-                      </button>
-                      <button onclick="location.href='/productos/details/{{_id}}';" class="btn btn-info">
-                          Consultar
-                      </button>
-                      </center>
-                  </td>
-                  <td>
-                        <input id="toggle-estado-{{inc @index}}" type="checkbox" {{#if (verificarEstado estado 'Activo')}}checked{{/if}} data-toggle="toggle" data-on="Activo" data-off="Inactivo" data-onstyle="success" data-offstyle="danger" onchange="functionTest(this, '{{_id}}');">
-                    </td>
-                </tr>
-                {{/each}}
-            </tbody>
-        </table>
-    </div>
+  <div class="table table-responsive">
+    <table class="table table-condensed table-bordered table-hover">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col" class="texto-alineacion">#</th>
+          <th scope="col" class="texto-alineacion">NOMBRE</th>
+          <th scope="col" class="texto-alineacion">DESCRIPCIÓN</th>
+          <th scope="col" class="texto-alineacion">TIPO</th>
+          <th scope="col" class="texto-alineacion">PRECIO</th>
+          <th scope="col" class="texto-alineacion">ACCIONES</th>
+          <th scope="col" class="texto-alineacion">ESTADO</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each productos}}
+        <tr>
+          <th scope="row">{{inc @index}}</th>
+          <td>{{nombre}}</td>
+          <td>{{descripcion}}</td>
+          <td>{{tipo}}</td>
+          <td>{{precio}}</td>
+          <td>
+            <center>
+              <button onclick="location.href='/productos/edit/{{_id}}';" class="btn btn-warning">
+                Editar
+              </button>
+              <button onclick="location.href='/productos/details/{{_id}}';" class="btn btn-info">
+                Consultar
+              </button>
+            </center>
+          </td>
+          <td>
+            <input id="toggle-estado-{{inc @index}}" type="checkbox"
+              {{#if (verificarEstado estado 'Activo')}}checked{{/if}} data-toggle="toggle" data-on="Activo"
+              data-off="Inactivo" data-onstyle="success" data-offstyle="danger"
+              onchange="functionTest(this, '{{_id}}');">
+          </td>
+        </tr>
+        {{/each}}
+      </tbody>
+    </table>
+    <input type="button" value="Imprimir" onclick="window.print()" class="btn btn-secondary">
+  </div>
 
-    <script type="text/javascript">
-          function functionTest(e, identifier){
-            const XHR = new XMLHttpRequest();
+  <script type="text/javascript">
+    function functionTest(e, identifier) {
+      const XHR = new XMLHttpRequest();
 
-            // Define what happens on successful data submission
-            XHR.addEventListener( 'load', function(event) {
-              if(XHR.readyState === XMLHttpRequest.DONE) {
-                var status = XHR.status;
-                var modal = $('#applicationModal');
-                if (status === 0 || (status >= 200 && status < 400)) {
-                  modal.find('.modal-body h4').text('Operación realizada exitosamente');
-                  modal.modal('show');
-                } else {
-                  console.log('Status error code: ', status);
-                  modal.find('.modal-title').text('Error');
-                  modal.find('.modal-body h4').text('Error al ejecutar la operacion.');
-                  modal.modal('show');
-                  if (!e.checked) {
-                    var toggle = $('#' + e.id).data('bs.toggle');
-                    toggle.on(true);
-                  } else {
-                    var toggle = $('#' + e.id).data('bs.toggle');
-                    toggle.off(true);
-                  }                    
-                }
-              }
-            } );
-
-            // Set up our request
-            if (e.checked) {
-              XHR.open( 'POST', '/productos/habilitar' );
+      // Define what happens on successful data submission
+      XHR.addEventListener('load', function (event) {
+        if (XHR.readyState === XMLHttpRequest.DONE) {
+          var status = XHR.status;
+          var modal = $('#applicationModal');
+          if (status === 0 || (status >= 200 && status < 400)) {
+            modal.find('.modal-body h4').text('Operación realizada exitosamente');
+            modal.modal('show');
+          } else {
+            console.log('Status error code: ', status);
+            modal.find('.modal-title').text('Error');
+            modal.find('.modal-body h4').text('Error al ejecutar la operacion.');
+            modal.modal('show');
+            if (!e.checked) {
+              var toggle = $('#' + e.id).data('bs.toggle');
+              toggle.on(true);
             } else {
-              XHR.open( 'POST', '/productos/deshabilitar' );
+              var toggle = $('#' + e.id).data('bs.toggle');
+              toggle.off(true);
             }
+          }
+        }
+      });
 
-            var data = {};
-            data.id = identifier;
-            let json = JSON.stringify(data);
+      // Set up our request
+      if (e.checked) {
+        XHR.open('POST', '/productos/habilitar');
+      } else {
+        XHR.open('POST', '/productos/deshabilitar');
+      }
 
-            XHR.setRequestHeader('Content-type','application/json; charset=utf-8');
-            XHR.send( json );
-          }    
-      </script>
+      var data = {};
+      data.id = identifier;
+      let json = JSON.stringify(data);
+
+      XHR.setRequestHeader('Content-type', 'application/json; charset=utf-8');
+      XHR.send(json);
+    }    
+  </script>
 </div>
