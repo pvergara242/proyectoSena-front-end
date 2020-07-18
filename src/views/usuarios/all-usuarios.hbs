@@ -86,22 +86,10 @@
       data.id = identifier;
       let json = JSON.stringify(data);
 
-      function generarPDF() {
-        pdf.create(content).toFile('./html-pdf.pdf', function (err, res) {
-          if (err) {
-            console.log(err);
-          } else {
-            console.log(res);
-          }
-        });
-      }
-
       XHR.setRequestHeader('Content-type', 'application/json; charset=utf-8');
       XHR.send(json);
-
-
-
     });
-    }    
+    }   
+  
   </script>
 </div>

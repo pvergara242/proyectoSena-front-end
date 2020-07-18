@@ -23,7 +23,6 @@
     "express-session": "^1.17.1",
     "express-validator": "^6.6.0",
     "handlebars-form-helpers": "^0.1.4",
-    "html-pdf": "^2.2.0",
     "jquery": "^3.5.0",
     "local-auth": "0.0.3",
     "method-override": "^3.0.0",
@@ -31,7 +30,6 @@
     "nodemon": "^2.0.4",
     "passport": "^0.4.1",
     "passport-local": "^1.0.0",
-    "pdfkit": "^0.11.0",
     "popper.js": "^1.16.1",
     "yarn": "^1.22.4"
   },
