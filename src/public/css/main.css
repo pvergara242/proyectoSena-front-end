@@ -496,6 +496,92 @@ legend{
   top: 450px;
   left: 50px;
 }
+
+.logoNovastock{
+  display: none;
+
+}
+@media print{
+  .logoNovastock{
+      display: block;
+      width: 150px;
+      height: 150px;
+      margin-left: -480px;
+  }
+  #formulario{
+    display: block;
+    left: 480px;
+  }
+  
+}@media print{
+  .btn{
+    display: none;
+  }
+  
+  .logoNovastock1{
+    display: none;
+  }
+  
+  @media print{
+    .logoNovastock1{
+      display: block;
+      width: 50px;
+      height: 50px;
+    }
+    .texto-alineacion4{
+      display: none;
+    }
+    .texto-alineacion5{
+      display: none;
+    }
+  }
+  
+  /* usuarios */
+  .logoNovastock3{
+    display: none;
+  }
+  
+  /* usuarios */
+  @media print{
+    .logoNovastock3{
+      display: block;
+      width: 80px;
+      height: 80px;
+      margin-left: -480px;
+    }
+    .texto-alineacion4{
+      display: none;
+    }
+    .texto-alineacion5{
+      display: none;
+    }
+  }
+  
+  
+  /* proveedores */
+  .logoNovastock5{
+    display: none;
+  }
+  @media print{
+    .logoNovastock5{
+      display: block;
+      width: 120px;
+      height: 120px;
+      left: 700px;
+    }
+    .texto-alineacion4{
+      display: none;
+    }
+    .texto-alineacion5{
+      display: none;
+    }
+  }
+  
+  
+}
+
+
+
 /* estilos formulario productos */
 
 #formulario{

@@ -130,12 +130,3 @@ footer{
    margin-top: 50px;
 }
 
-.logoNova{
-    display: none;
-
-}
-@media print{
-    .logoNovastock{
-        display: block;
-    }
-}
