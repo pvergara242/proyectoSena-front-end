@@ -1,7 +1,7 @@
 /* SECCION / SLIDER */
 .conten-slider{
     width: 90%;
-    height: 460px;
+    height: 50px;
     margin: auto;
 }
 .slider-wrap{
@@ -14,8 +14,8 @@
     list-style: none;
 }
 .slider-wrap img{
-    width: 100%;
-    height: 400px;
+    width: 200%;
+    height: 100px;
 }
 
 
@@ -52,13 +52,13 @@
 }
 .imagen-uno{
     width: 40%;
-    height: 350px;
+    height: 100px;
     margin-left: 20px;
     display:inline-block;
 }
 .img-multimedia-uno{
     width: 100%;
-    height: 350px;
+    height: 100px;
     margin-left: 30px;
     position: relative;
     top: 25px;
@@ -66,7 +66,7 @@
 }
 .info-uno{
     width: 50%;
-    height: 350px;
+    height: 100px;
     margin-left: 50px;
     display:inline-block;
 }
@@ -79,7 +79,7 @@
 }
 .info-dos{
     width: 50%;
-    height: 350px;
+    height: 50%;
     margin-left: 50px;
     display:inline-block;
 }
