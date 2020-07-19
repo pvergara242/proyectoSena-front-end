@@ -6,6 +6,8 @@ facturaCtrl.renderFactura = async(req, res, next) => {
     var codigoBarras;
     var cantidadProductos = 0;
 
+    let usuario = JSON.parse(req.cookies['usuario']);
+
     if (req.body.codigoBarras) {
         if (Array.isArray(req.body.codigoBarras)) {
             var index = 0;
@@ -25,7 +27,11 @@ facturaCtrl.renderFactura = async(req, res, next) => {
         }
     }
 
-    rest.get(req, '/api/v1/inventario/' + codigoBarras)
+    var nuevoDetalle = {
+        codigoBarras: codigoBarras
+    };
+
+    rest.post(req, '/api/v1/usuarios/' + usuario.id + '/factura/' + req.body.numeroRemision + '/detalle', nuevoDetalle)
     .then(result => {
         var productos = [];
 
@@ -55,11 +61,14 @@ facturaCtrl.renderFactura = async(req, res, next) => {
         console.log(err);
 
         var errorMessage;
-        if (err.response && err.response.status && err.response.status === 400) {
+        if (err.response && err.response.status && err.response.status === 400 
+            && err.response.data && err.response.data.codigo && err.response.data.codigo === '40001') {
+            errorMessage = 'Producto no existe';
+        } else if (err.response && err.response.status && err.response.status === 400) {
             errorMessage = 'Parámetros inválidos';
         } else if (err.response && err.response.status && err.response.status === 404 
             && err.response.data && err.response.data.codigo === '40400') {
-            errorMessage = 'Producto no existe';
+            errorMessage = 'Factura no existe';
         } else if (err.response && err.response.status && err.response.status === 401) {
             return next(err);
         } else {

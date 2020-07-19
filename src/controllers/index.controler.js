@@ -59,15 +59,12 @@
             let usuario = JSON.parse(req.cookies['usuario']);
 
             var defaultProducto = {};
-            var productos = [];
             rest.get(req, '/api/v1/usuarios/' + usuario.id + '/factura')
             .then(result => {
-                if (result.data.detalles.length > 0) {
-                    productos.push(result.data.detalles, defaultProducto);
-                } else {
-                    productos.push(defaultProducto);
-                }
-                res.render('Factura', { numeroRemision: result.data.numero, productos: productos });
+                result.data.detalles.push(defaultProducto);
+
+                console.log('productos: ', result.data.detalles);
+                res.render('Factura', { numeroRemision: result.data.numero, productos: result.data.detalles });
             })
             .catch(err => {
                 console.log(err);
