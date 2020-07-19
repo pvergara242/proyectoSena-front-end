@@ -21,19 +21,21 @@
         {{!-- por cada usuarios registrado --}}
         {{#each usuarios}}
         {{!-- pinta todos los datos en el HTML --}}
-        <tr>
+        <tr class="listado">
           <th scope="row">{{inc @index}}</th>
           <td>{{datosPersonales.tipoDocumento}}</td>
           <td>{{datosPersonales.numeroDocumento}}</td>
           <td>{{datosPersonales.nombres}}</td>
           <td>{{datosPersonales.apellidos}}</td>
-          <td>
-            <button onclick="location.href='/usuarios/edit/{{_id}}';" class="btn btn-warning">
-              Editar
-            </button>
-            <button onclick="location.href='/usuarios/details/{{_id}}';" class="btn btn-info">
-              Consultar
-            </button>
+         <td>
+            <center>
+              <button onclick="location.href='/usuarios/edit/{{_id}}';" class="btn btn-warning">
+                Editar
+              </button>
+              <button onclick="location.href='/usuarios/details/{{_id}}';" class="btn btn-info">
+                Consultar
+              </button>
+            </center>
           </td>
           <td>
             <input id="toggle-estado-{{inc @index}}" type="checkbox"
