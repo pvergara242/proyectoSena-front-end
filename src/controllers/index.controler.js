@@ -56,9 +56,27 @@
 
 // renderiza la conexion con la factura
         indexCrl.renderFactura = (req, res) => {
+            let usuario = JSON.parse(req.cookies['usuario']);
+
             var defaultProducto = {};
-            //TODO cargar remision de BD
-            res.render('Factura', { numeroRemision: '123456789', productos: [ defaultProducto ] })
+            var productos = [];
+            rest.get(req, '/api/v1/usuarios/' + usuario.id + '/factura')
+            .then(result => {
+                if (result.data.detalles.length > 0) {
+                    productos.push(result.data.detalles, defaultProducto);
+                } else {
+                    productos.push(defaultProducto);
+                }
+                res.render('Factura', { numeroRemision: result.data.numero, productos: productos });
+            })
+            .catch(err => {
+                console.log(err);
+
+                res.render('index', {
+                    modalCompleteMessage: 'Error en la operación',
+                    modalCompleteTitle: 'Error'
+                });
+            });
         };
 
 // renderiza la conexion con el login 
