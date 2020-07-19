@@ -56,11 +56,7 @@
 
 // renderiza la conexion con la factura
         indexCrl.renderFactura = (req, res) => {
-            console.log('ejecutando factura desde index');
             let usuario = JSON.parse(req.cookies['usuario']);
-
-            console.log('usuario: ', usuario);
-            console.log('URL: ', '/api/v1/usuarios/' + usuario.id + '/factura');
 
             var defaultProducto = {};
             var productos = [];
