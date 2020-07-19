@@ -1,82 +1,82 @@
-        const indexCrl = {};
-        const rest = require('../configuration/rest');
+            const indexCrl = {};
+            const rest = require('../configuration/rest');
 
-//renderizar la conexion con las interfaces de las paginas 
-        indexCrl.renderIndex = (req, res) => {
-            res.render('index')
-        };
-
-// renderiza la conexion con datos personales 
-        indexCrl.renderAbout = (req, res) => {
-            res.render('About')
-        };
-// renderiza la conexion con productos 
-        indexCrl.renderproductos = (req, res, next) => {
-            const params = {
-                includeInactive: false
+    //renderizar la conexion con las interfaces de las paginas 
+            indexCrl.renderIndex = (req, res) => {
+                res.render('index')
             };
 
-// valida si el producto ha sido creado con proveedores 
-            rest.get(req, '/api/v1/proveedores', params)
-                .then(result => {
-                    res.render('productos', { proveedores: result.data });
-                })
-// de lo contrario muestra un error 
-                .catch(err => {
-                    next(err);
-                });
-        };
+    // renderiza la conexion con datos personales 
+            indexCrl.renderAbout = (req, res) => {
+                res.render('About')
+            };
+    // renderiza la conexion con productos 
+            indexCrl.renderproductos = (req, res, next) => {
+                const params = {
+                    includeInactive: false
+                };
 
-// renderiza la conexion con usuarios 
-        indexCrl.renderUsuarios = (req, res) => {
-            res.render('Usuarios')
-        };
-
-// renderiza la conexion con proveedores
-        indexCrl.renderProveedores = (req, res) => {
-            res.render('Proveedores')
-        };
-
-// renderiza la conexion con inventarios
-        indexCrl.renderInventario = (req, res, next) => {
-            const params = {
-                includeInactive: false
+    // valida si el producto ha sido creado con proveedores 
+                rest.get(req, '/api/v1/proveedores', params)
+                    .then(result => {
+                        res.render('productos', { proveedores: result.data });
+                    })
+    // de lo contrario muestra un error 
+                    .catch(err => {
+                        next(err);
+                    });
             };
 
-// valida si el produto se creo exitosamente en inventario con la cantidad correcta
-            rest.get(req, '/api/v1/productos', params)
-                .then(result => {
-                    res.render('inventario', { productos: result.data });
-                })
-// de lo contrario saldra error 
-                .catch(err => {
-                    next(err);
-                });
-        };
+    // renderiza la conexion con usuarios 
+            indexCrl.renderUsuarios = (req, res) => {
+                res.render('Usuarios')
+            };
 
-// renderiza la conexion con la factura
-        indexCrl.renderFactura = (req, res) => {
-            var defaultProducto = {};
-            //TODO cargar remision de BD
-            res.render('Factura', { numeroRemision: '123456789', productos: [ defaultProducto ] })
-        };
+    // renderiza la conexion con proveedores
+            indexCrl.renderProveedores = (req, res) => {
+                res.render('Proveedores')
+            };
 
-// renderiza la conexion con el login 
-        indexCrl.renderLogin = (req, res) => {
-            res.render('Login')
-        };
+    // renderiza la conexion con inventarios
+            indexCrl.renderInventario = (req, res, next) => {
+                const params = {
+                    includeInactive: false
+                };
 
- // cierra sesion 
-        indexCrl.renderLogout = (req, res, next) => {
-            res.locals.usuario = false;
-            res.locals.usuarioInfo = {};
-            res.clearCookie('token', { path: '/' });
-            res.clearCookie('usuario', { path: '/' });
-            res.status(200);
-            res.redirect('/');
-        };
+    // valida si el produto se creo exitosamente en inventario con la cantidad correcta
+                rest.get(req, '/api/v1/productos', params)
+                    .then(result => {
+                        res.render('inventario', { productos: result.data });
+                    })
+    // de lo contrario saldra error 
+                    .catch(err => {
+                        next(err);
+                    });
+            };
+
+    // renderiza la conexion con la factura
+            indexCrl.renderFactura = (req, res) => {
+                var defaultProducto = {};
+                //TODO cargar remision de BD
+                res.render('Factura', { numeroRemision: '123456789', productos: [ defaultProducto ] })
+            };
+
+    // renderiza la conexion con el login 
+            indexCrl.renderLogin = (req, res) => {
+                res.render('Login')
+            };
+
+    // cierra sesion 
+            indexCrl.renderLogout = (req, res, next) => {
+                res.locals.usuario = false;
+                res.locals.usuarioInfo = {};
+                res.clearCookie('token', { path: '/' });
+                res.clearCookie('usuario', { path: '/' });
+                res.status(200);
+                res.redirect('/');
+            };
 
 
 
-// exportamos el modelo
-        module.exports = indexCrl;
+    // exportamos el modelo
+            module.exports = indexCrl;
