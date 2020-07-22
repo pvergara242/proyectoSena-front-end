@@ -2,9 +2,6 @@
     const {
         validationResult
     } = require('express-validator');
-
-
-
     const errorValidation = {};
 
 // funcion que valida los campos de la peticion
