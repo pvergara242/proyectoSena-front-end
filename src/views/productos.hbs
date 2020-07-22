@@ -5,43 +5,58 @@
             <label for="input proveedor" class="col-sm-2 col-form-label">Proveedor: </label>
         <div  class="col-sm-10">
             {{!-- select --}}
-            <select name="proveedor" id="proveedor" class="custom-select" required>
+            <select name="proveedor" id="proveedor" class="custom-select" required >
                 {{!-- para mostrar la lista de proveedor por cada proveedor va a pintar este HTML --}}
+                <option value="">- Selecciona un proveedor -</option>
                 {{#each proveedores}}
                     <option value="{{_id}}">{{nombre}}</option>
                 {{/each}}
             </select>
          </div>
+         
         </div>
         <div id="divNombre" class="form-group row">
             <label for="inputNombre" class="col-sm-2 col-form-label">Nombre: </label>
-            <div class="col-sm-10">
-                <input name="nombre" type="text" class="form-control" id="inputNombre">
+            <div class="col-sm-10" id="divNombre">
+                <input name="nombre" type="text" class="form-control" id="inputNombre"  minlength="4" maxlength="20" required> 
             </div>
         </div>
         <div id="divDescripcion" class="form-group row">
             <label for="inputDescripcion" class="col-sm-2 col-form-label">Descripcion: </label>
             <div class="col-sm-10">
-                <input name="descripcion" type="text" class="form-control" id="inputDescripcion">
+                <input name="descripcion" type="text" class="form-control" id="inputDescripcion" minlength="5" maxlength="30" required>
             </div>
         </div>
         <div id="divTipo" class="form-group row">
             <label for="inputTipo" class="col-sm-2 col-form-label">Tipo: </label>
             <div class="col-sm-10">
-                <input name="tipo" type="text" class="form-control" id="inputTipo">
+                <select name="tipo" id="inputTipo" class="custom-select" required>
+                    {{!-- para mostrar la lista de tipos de productos --}}
+                    <option value="">- Selecciona un tipo -</option>
+                    <option value="Bebida">Bebida</option>
+                    <option value="Comida">Comida</option>
+                    <option value="Enlatados">Enlatados</option>
+                    <option value="Verduras">Verduras</option>
+                    <option value="Granos">Granos</option>
+                    <option value="Lacteos">Lacteos</option>
+                    <option value="Granos">Frutas</option>
+                    <option value="Lacteos">Higiene</option>
+                </select>
             </div>
         </div>
         <div id="divPrecio" class="form-group row">
             <label for="inputPrecio" class="col-sm-2 col-form-label">Precio: </label>
             <div class="col-sm-10">
-                <input name="precio" type="text" class="form-control" id="inputPrecio">
+                <input name="precio" id="inputPrecio" type="number" step="any" min="0.01" max="1000000" class="form-control" required>
             </div>
         </div>
         <div id="divBotones" class="form-group">
             <div>
-                <input type="submit" class="btn btn-secondary" value="Registrar">
-                <input type="button" class="btn btn-secondary" value="Reiniciar Campos" onclick="document.getElementById('formulario').reset()">
+                <center>
+                <input type="submit" class="btn btn-primary" value="Registrar">
+                <input type="button" class="btn btn-warning" value="Reiniciar Campos" onclick="document.getElementById('formulario').reset()">
                 <input type="button" class="btn btn-secondary" value="Cancelar" onClick="window.location.href='/productos/all'">
+                </center>
             </div>
         </div>
     </form>
