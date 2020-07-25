@@ -27,7 +27,7 @@
 				<hr/>
 				<h1 style="text-align: center;">REMISION</h1>
 				<div class="form-row table-responsive">
-					<table class="table table-bordered">
+					<table class="table table-bordered" id="table-detalles">
 						<thead>
 							<tr>
 								<th style="text-align: center;">
@@ -101,6 +101,11 @@
 					formulario.submit();
 				  }
 	        }
+
+	        window.onload = function() {
+	        	var elementosCodigoBarras = document.getElementsByName('codigoBarras');
+	        	elementosCodigoBarras[elementosCodigoBarras.length - 1].focus();
+			};
 		</script>
 	</body>
 </html>

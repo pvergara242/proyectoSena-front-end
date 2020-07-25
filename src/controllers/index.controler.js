@@ -63,7 +63,6 @@
             .then(result => {
                 result.data.detalles.push(defaultProducto);
 
-                console.log('productos: ', result.data.detalles);
                 res.render('Factura', { numeroRemision: result.data.numero, productos: result.data.detalles });
             })
             .catch(err => {
