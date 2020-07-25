@@ -34,6 +34,7 @@ facturaCtrl.renderFactura = async(req, res, next) => {
     rest.post(req, '/api/v1/usuarios/' + usuario.id + '/factura/' + req.body.numeroRemision + '/detalle', nuevoDetalle)
     .then(result => {
         var productos = [];
+        var nuevoDetalleProcesado = false;
 
         for(let k = 0; k < cantidadProductos - 1; k++){
             var productoCompra = {
@@ -44,13 +45,18 @@ facturaCtrl.renderFactura = async(req, res, next) => {
                 cantidadCompra: req.body.cantidadCompra[k],
                 codigoBarras: req.body.codigoBarras[k]
             };
+
+            if (result.data.codigoBarras === req.body.codigoBarras[k]) {
+                productoCompra = result.data;
+                nuevoDetalleProcesado = true;
+            }
+
             productos[k] = productoCompra;
         }
 
-        result.data.cantidadCompra = 1;
-        result.data.codigoBarras = codigoBarras;
-
-        productos[cantidadProductos] = result.data;
+        if (!nuevoDetalleProcesado) {
+            productos[cantidadProductos] = result.data;
+        }
 
         var defaultProducto = {};
         productos[cantidadProductos + 1] = defaultProducto;

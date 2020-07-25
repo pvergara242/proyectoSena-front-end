@@ -226,7 +226,6 @@ usuariosCtrl.renderConsultarUsuario = async(req, res, next) => {
         switch (method) {
             case 'crearUsuario':
                 {
-                    console.log('entro por switch de crearUsuario');
                     return [
                         body('tipoDocumento', 'Debe ingresar el tipo de documento').exists().notEmpty(),
                         body('numDoc', 'Debe ingresar el numero de documento').exists().notEmpty(),
