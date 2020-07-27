@@ -65,7 +65,7 @@
 						                {{/field_errors}}
 					                </td>
 					                <td>
-					                    {{input_validation 'cantidadCompra' cantidadCompra errors class="form-control" id="cantidadCompra{{inc @index}}"}}
+					                    {{input_validation 'cantidadCompra' cantidadCompra  errors  readonly="true" class="form-control" id="cantidadCompra{{inc @index}}"}}
 						                {{#field_errors 'cantidadCompra' errors}}
 						                    <span class="help-block text-error">{{this}}</span>
 						                {{/field_errors}}
