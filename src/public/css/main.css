@@ -498,7 +498,7 @@ legend{
 }
 
 .logoNovastock{
-  display: none;
+  display: block;
 }
 @media print{
   .logoNovastock{
@@ -522,10 +522,30 @@ legend{
     display: none;
   }
 }
-  
+
+.logoNovastock0{
+  display: block;
+  width: 180px;
+  height: 120px;
+  justify-content: center;
+  align-items: center;
+  margin-left: 450px;
+}
+
   .logoNovastock1{
-    display: none;
+    display: block;
+    width: 180px;
+    height: 120px;
+    justify-content: center;
+    align-items: center;
+    margin-left: 450px;
+  }
+  .logo1{
+    display: block;
+    width: 180px;
+    height: 80px;
     
+   
   }
   
   @media print{
@@ -544,7 +564,12 @@ legend{
   
   /* usuarios */
   .logoNovastock3{
-    display: none;
+    display: block;
+    width: 180px;
+    height: 120px;
+    justify-content: center;
+    align-items: center;
+    margin-left: 450px;
   }
   
   /* usuarios */
@@ -565,12 +590,22 @@ legend{
   }
   
   .logoNovastock4{
-    margin-top: -120px;
+    display: block;
+    width: 180px;
+    height: 120px;
+    justify-content: center;
+    align-items: center;
+    margin-left: 450px;
   }
   
   /* proveedores */
   .logoNovastock5{
-    display: none;
+    display: block;
+    width: 180px;
+    height: 120px;
+    justify-content: center;
+    align-items: center;
+    margin-left: 450px;
   }
   @media print{
     .logoNovastock5{
@@ -593,7 +628,24 @@ legend{
     text-align: center;
   }
 }
-
+.logoNovastock{
+  width: 30%;
+  height: 90px;
+  margin-left: 150px;
+}
+.logo1{
+  width: 30%;
+  height: 100px;
+  margin-left: 150px;
+}
+.logo2{
+  width: 15%;
+  height: 80px;
+  justify-content: center;
+  align-items: center;
+  margin-right: 240px;
+  margin-top: 50px;
+}
 
 
 /* estilos formulario productos */

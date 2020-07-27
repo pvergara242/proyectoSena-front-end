@@ -1,5 +1,6 @@
 {{!-- formulario para editar un producto--}}
 <form action="/productos/actualizar-productos" method="post" id="formulario" onsubmit="return validacion()">
+    <img src="../../img/WhatsApp Image 2020-07-18 at 11.40.34 AM.jpeg" alt="" class="logo ">
     <legend>DATOS DE PRODUCTOS</legend>
     <input type="hidden" value="{{productos._id}}" name="productosId" />
     <input type="hidden" value="{{productos.proveedor._id}}" name="proveedorId" />
